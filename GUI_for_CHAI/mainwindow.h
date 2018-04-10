@@ -104,6 +104,10 @@ private slots:
 
     void on_lineEdit_L3_textChanged(const QString &arg1);
 
+    void on_Set_L_Button_clicked();
+
+    void on_Get_L_Button_clicked();
+
 private:
     Ui::MainWindow *ui;
     QTimer *timer, *singleRead, *singleTrans;

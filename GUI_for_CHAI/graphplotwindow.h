@@ -81,6 +81,12 @@ private slots:
 
   void on_horizontalSlider_sliderMoved(int position);
 
+  void on_horizontalSlider_min_sliderMoved(int position);
+
+  void on_spinBox_sec_valueChanged(int arg1);
+
+  void on_spinBox__min_valueChanged(int arg1);
+
 private:
     Ui::GraphPlotWindow *ui;
     QTimer dataTimer, pauseTimer;

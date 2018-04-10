@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1073</width>
+    <width>1180</width>
     <height>810</height>
    </rect>
   </property>
@@ -17,7 +17,7 @@
    <widget class="QLabel" name="label_5">
     <property name="geometry">
      <rect>
-      <x>940</x>
+      <x>1040</x>
       <y>30</y>
       <width>101</width>
       <height>16</height>
@@ -30,8 +30,8 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>950</x>
-      <y>710</y>
+      <x>1060</x>
+      <y>720</y>
       <width>111</width>
       <height>16</height>
      </rect>
@@ -40,38 +40,12 @@
      <string>pre-alpha version</string>
     </property>
    </widget>
-   <widget class="QLabel" name="label_2">
-    <property name="geometry">
-     <rect>
-      <x>420</x>
-      <y>40</y>
-      <width>271</width>
-      <height>41</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>16</pointsize>
-      <weight>75</weight>
-      <bold>true</bold>
-     </font>
-    </property>
-    <property name="text">
-     <string>CAN BUS Manager</string>
-    </property>
-    <property name="textFormat">
-     <enum>Qt::PlainText</enum>
-    </property>
-    <property name="alignment">
-     <set>Qt::AlignCenter</set>
-    </property>
-   </widget>
    <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>960</x>
-      <y>120</y>
-      <width>95</width>
+      <x>890</x>
+      <y>90</y>
+      <width>251</width>
       <height>111</height>
      </rect>
     </property>
@@ -99,57 +73,11 @@
      </item>
     </layout>
    </widget>
-   <widget class="QWidget" name="verticalLayoutWidget">
-    <property name="geometry">
-     <rect>
-      <x>960</x>
-      <y>250</y>
-      <width>95</width>
-      <height>121</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_11">
-     <item>
-      <widget class="QPushButton" name="pushButton_5">
-       <property name="text">
-        <string>L Graph</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_3">
-       <property name="text">
-        <string>Status</string>
-       </property>
-      </widget>
-     </item>
-     <item>
-      <widget class="QPushButton" name="pushButton_2">
-       <property name="text">
-        <string>Reset</string>
-       </property>
-      </widget>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QTextEdit" name="TimesDisplay">
-    <property name="geometry">
-     <rect>
-      <x>100</x>
-      <y>440</y>
-      <width>331</width>
-      <height>201</height>
-     </rect>
-    </property>
-    <property name="readOnly">
-     <bool>true</bool>
-    </property>
-   </widget>
    <widget class="QLineEdit" name="lineEdit11">
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>480</y>
+      <x>80</x>
+      <y>620</y>
       <width>113</width>
       <height>22</height>
      </rect>
@@ -158,8 +86,8 @@
    <widget class="QLineEdit" name="lineEdit12">
     <property name="geometry">
      <rect>
-      <x>620</x>
-      <y>480</y>
+      <x>200</x>
+      <y>620</y>
       <width>113</width>
       <height>22</height>
      </rect>
@@ -168,8 +96,8 @@
    <widget class="QLineEdit" name="lineEdit13">
     <property name="geometry">
      <rect>
-      <x>740</x>
-      <y>480</y>
+      <x>320</x>
+      <y>620</y>
       <width>113</width>
       <height>22</height>
      </rect>
@@ -178,8 +106,8 @@
    <widget class="QLineEdit" name="lineEdit21">
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>510</y>
+      <x>80</x>
+      <y>650</y>
       <width>113</width>
       <height>22</height>
      </rect>
@@ -188,8 +116,8 @@
    <widget class="QLineEdit" name="lineEdit22">
     <property name="geometry">
      <rect>
-      <x>620</x>
-      <y>510</y>
+      <x>200</x>
+      <y>650</y>
       <width>113</width>
       <height>22</height>
      </rect>
@@ -198,8 +126,8 @@
    <widget class="QLineEdit" name="lineEdit23">
     <property name="geometry">
      <rect>
-      <x>740</x>
-      <y>510</y>
+      <x>320</x>
+      <y>650</y>
       <width>113</width>
       <height>22</height>
      </rect>
@@ -208,8 +136,8 @@
    <widget class="QLineEdit" name="lineEdit31">
     <property name="geometry">
      <rect>
-      <x>500</x>
-      <y>540</y>
+      <x>80</x>
+      <y>680</y>
       <width>113</width>
       <height>22</height>
      </rect>
@@ -218,8 +146,8 @@
    <widget class="QLineEdit" name="lineEdit32">
     <property name="geometry">
      <rect>
-      <x>620</x>
-      <y>540</y>
+      <x>200</x>
+      <y>680</y>
       <width>113</width>
       <height>22</height>
      </rect>
@@ -228,8 +156,8 @@
    <widget class="QLineEdit" name="lineEdit33">
     <property name="geometry">
      <rect>
-      <x>740</x>
-      <y>540</y>
+      <x>320</x>
+      <y>680</y>
       <width>113</width>
       <height>22</height>
      </rect>
@@ -238,8 +166,8 @@
    <widget class="QLabel" name="label_9">
     <property name="geometry">
      <rect>
-      <x>464</x>
-      <y>480</y>
+      <x>44</x>
+      <y>620</y>
       <width>21</width>
       <height>20</height>
      </rect>
@@ -251,8 +179,8 @@
    <widget class="QLabel" name="label_10">
     <property name="geometry">
      <rect>
-      <x>464</x>
-      <y>510</y>
+      <x>44</x>
+      <y>650</y>
       <width>21</width>
       <height>20</height>
      </rect>
@@ -264,8 +192,8 @@
    <widget class="QLabel" name="label_11">
     <property name="geometry">
      <rect>
-      <x>464</x>
-      <y>540</y>
+      <x>44</x>
+      <y>680</y>
       <width>21</width>
       <height>20</height>
      </rect>
@@ -277,8 +205,8 @@
    <widget class="QLabel" name="label_12">
     <property name="geometry">
      <rect>
-      <x>554</x>
-      <y>450</y>
+      <x>134</x>
+      <y>590</y>
       <width>21</width>
       <height>20</height>
      </rect>
@@ -290,8 +218,8 @@
    <widget class="QLabel" name="label_13">
     <property name="geometry">
      <rect>
-      <x>675</x>
-      <y>450</y>
+      <x>255</x>
+      <y>590</y>
       <width>20</width>
       <height>20</height>
      </rect>
@@ -303,8 +231,8 @@
    <widget class="QLabel" name="label_14">
     <property name="geometry">
      <rect>
-      <x>794</x>
-      <y>450</y>
+      <x>374</x>
+      <y>590</y>
       <width>21</width>
       <height>20</height>
      </rect>
@@ -313,248 +241,11 @@
      <string>T3</string>
     </property>
    </widget>
-   <widget class="QWidget" name="">
-    <property name="geometry">
-     <rect>
-      <x>278</x>
-      <y>100</y>
-      <width>671</width>
-      <height>311</height>
-     </rect>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_3">
-     <item>
-      <layout class="QHBoxLayout" name="horizontalLayout_2">
-       <item>
-        <widget class="QLabel" name="label_3">
-         <property name="text">
-          <string>ID</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_4">
-         <property name="text">
-          <string>Lenght</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QLabel" name="label_6">
-         <property name="text">
-          <string>Data</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <layout class="QVBoxLayout" name="verticalLayout_13">
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_5">
-           <item>
-            <widget class="QPushButton" name="TestModOnButton">
-             <property name="text">
-              <string>Test mod ON</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="TestModOffButton">
-             <property name="text">
-              <string>Test mod OFF</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="GetTimeAverageButton">
-             <property name="text">
-              <string>Get T aver</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QHBoxLayout" name="horizontalLayout_7">
-           <item>
-            <widget class="QPushButton" name="TransmitButton">
-             <property name="text">
-              <string>Transmit</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="ReadButton">
-             <property name="text">
-              <string>Read</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QPushButton" name="StopButton">
-             <property name="text">
-              <string>Stop</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <layout class="QVBoxLayout" name="verticalLayout_12">
-         <item>
-          <widget class="QCheckBox" name="ListenModBox">
-           <property name="text">
-            <string>Listen mod</string>
-           </property>
-          </widget>
-         </item>
-         <item>
-          <widget class="QCheckBox" name="checkBox_2">
-           <property name="text">
-            <string>Show</string>
-           </property>
-          </widget>
-         </item>
-        </layout>
-       </item>
-      </layout>
-     </item>
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout_2">
-       <item>
-        <widget class="QTextEdit" name="textEdit">
-         <property name="readOnly">
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-    </layout>
-   </widget>
-   <widget class="QGroupBox" name="groupBox">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>100</y>
-      <width>261</width>
-      <height>314</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>Options</string>
-    </property>
-    <layout class="QVBoxLayout" name="verticalLayout_4">
-     <item>
-      <layout class="QVBoxLayout" name="verticalLayout_5">
-       <item>
-        <layout class="QHBoxLayout" name="horizontalLayout_3">
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout_6">
-           <item>
-            <widget class="QLabel" name="label_8">
-             <property name="text">
-              <string>Choose channel</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QListWidget" name="listWidget">
-             <item>
-              <property name="text">
-               <string>Channel 0</string>
-              </property>
-             </item>
-             <item>
-              <property name="text">
-               <string>Channel 1</string>
-              </property>
-             </item>
-            </widget>
-           </item>
-           <item>
-            <layout class="QVBoxLayout" name="verticalLayout_7">
-             <item>
-              <widget class="QLabel" name="label_7">
-               <property name="text">
-                <string>Choose boudrate</string>
-               </property>
-              </widget>
-             </item>
-             <item>
-              <widget class="QListWidget" name="listWidget_2">
-               <item>
-                <property name="text">
-                 <string>125 kbit</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>500 kbit</string>
-                </property>
-               </item>
-               <item>
-                <property name="text">
-                 <string>1000 kbit</string>
-                </property>
-               </item>
-              </widget>
-             </item>
-            </layout>
-           </item>
-          </layout>
-         </item>
-         <item>
-          <layout class="QVBoxLayout" name="verticalLayout_8">
-           <item>
-            <widget class="QRadioButton" name="radioButton">
-             <property name="text">
-              <string>11 bit</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QRadioButton" name="radioButton_2">
-             <property name="text">
-              <string>29 bit</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QRadioButton" name="radioButton_3">
-             <property name="text">
-              <string>11/29 bit</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <layout class="QVBoxLayout" name="verticalLayout_9">
-             <item>
-              <layout class="QVBoxLayout" name="verticalLayout_10"/>
-             </item>
-            </layout>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </item>
-       <item>
-        <widget class="QPushButton" name="Connect">
-         <property name="text">
-          <string>Connect</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </item>
-    </layout>
-   </widget>
    <widget class="QLineEdit" name="lineEdit_L3">
     <property name="geometry">
      <rect>
-      <x>896</x>
-      <y>540</y>
+      <x>476</x>
+      <y>680</y>
       <width>113</width>
       <height>22</height>
      </rect>
@@ -566,8 +257,8 @@
    <widget class="QLineEdit" name="lineEdit_L1">
     <property name="geometry">
      <rect>
-      <x>896</x>
-      <y>480</y>
+      <x>476</x>
+      <y>620</y>
       <width>113</width>
       <height>22</height>
      </rect>
@@ -579,8 +270,8 @@
    <widget class="QLineEdit" name="lineEdit_L2">
     <property name="geometry">
      <rect>
-      <x>896</x>
-      <y>510</y>
+      <x>476</x>
+      <y>650</y>
       <width>113</width>
       <height>22</height>
      </rect>
@@ -592,8 +283,8 @@
    <widget class="QLabel" name="label_15">
     <property name="geometry">
      <rect>
-      <x>950</x>
-      <y>450</y>
+      <x>530</x>
+      <y>590</y>
       <width>21</width>
       <height>20</height>
      </rect>
@@ -602,13 +293,505 @@
      <string>L</string>
     </property>
    </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>30</y>
+      <width>831</width>
+      <height>691</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_14">
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_3">
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_2">
+         <item>
+          <spacer name="horizontalSpacer">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_2">
+           <property name="font">
+            <font>
+             <pointsize>16</pointsize>
+             <weight>75</weight>
+             <bold>true</bold>
+            </font>
+           </property>
+           <property name="text">
+            <string>CAN BUS Manager</string>
+           </property>
+           <property name="textFormat">
+            <enum>Qt::PlainText</enum>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <spacer name="horizontalSpacer_2">
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="sizeHint" stdset="0">
+            <size>
+             <width>40</width>
+             <height>20</height>
+            </size>
+           </property>
+          </spacer>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_13">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_5">
+             <item>
+              <widget class="QPushButton" name="TestModOnButton">
+               <property name="text">
+                <string>Test mod ON</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="TestModOffButton">
+               <property name="text">
+                <string>Test mod OFF</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="GetTimeAverageButton">
+               <property name="text">
+                <string>Get T aver</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_7">
+             <item>
+              <widget class="QPushButton" name="TransmitButton">
+               <property name="text">
+                <string>Transmit</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="ReadButton">
+               <property name="text">
+                <string>Read</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="StopButton">
+               <property name="text">
+                <string>Stop</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_12">
+           <item>
+            <widget class="QCheckBox" name="ListenModBox">
+             <property name="text">
+              <string>Listen mod</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="checkBox_2">
+             <property name="text">
+              <string>Show</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QTextEdit" name="textEdit">
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_11">
+       <item>
+        <widget class="QLabel" name="label_16">
+         <property name="text">
+          <string>Times</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QTextEdit" name="TimesDisplay">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Expanding" vsizetype="MinimumExpanding">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>890</x>
+      <y>210</y>
+      <width>251</width>
+      <height>494</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="verticalLayout_15">
+     <item>
+      <layout class="QVBoxLayout" name="verticalLayout_16">
+       <item>
+        <widget class="QLabel" name="label_20">
+         <property name="text">
+          <string>Sensor options</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_6">
+         <item>
+          <widget class="QLabel" name="label_17">
+           <property name="text">
+            <string>S1</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_18">
+           <property name="text">
+            <string>S2</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QLabel" name="label_19">
+           <property name="text">
+            <string>S3</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QHBoxLayout" name="horizontalLayout_8">
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_17">
+           <item>
+            <widget class="QLabel" name="label_21">
+             <property name="text">
+              <string>L0</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_22">
+             <property name="text">
+              <string>L1</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLabel" name="label_23">
+             <property name="text">
+              <string>L2</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_18">
+           <item>
+            <widget class="QLineEdit" name="lineEdit_L11">
+             <property name="text">
+              <string>14990</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit_L21">
+             <property name="text">
+              <string>56007</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit_L31">
+             <property name="text">
+              <string>25000</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_20">
+           <item>
+            <widget class="QLineEdit" name="lineEdit_L12">
+             <property name="text">
+              <string>15024</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit_L22">
+             <property name="text">
+              <string>56011</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit_L32">
+             <property name="text">
+              <string>25000</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="verticalLayout_22">
+           <item>
+            <widget class="QLineEdit" name="lineEdit_L13">
+             <property name="text">
+              <string>14972</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit_L23">
+             <property name="text">
+              <string>56012</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QLineEdit" name="lineEdit_L33">
+             <property name="text">
+              <string>25000</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <widget class="QPushButton" name="Set_L_Button">
+         <property name="text">
+          <string>Set L</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="Get_L_Button">
+         <property name="text">
+          <string>Get current</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QGroupBox" name="groupBox">
+       <property name="title">
+        <string>Connect options</string>
+       </property>
+       <layout class="QVBoxLayout" name="verticalLayout_4">
+        <item>
+         <layout class="QVBoxLayout" name="verticalLayout_5">
+          <item>
+           <layout class="QHBoxLayout" name="horizontalLayout_3">
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_6">
+              <item>
+               <widget class="QLabel" name="label_8">
+                <property name="text">
+                 <string>Choose channel</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QListWidget" name="listWidget">
+                <item>
+                 <property name="text">
+                  <string>Channel 0</string>
+                 </property>
+                </item>
+                <item>
+                 <property name="text">
+                  <string>Channel 1</string>
+                 </property>
+                </item>
+               </widget>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_7">
+                <item>
+                 <widget class="QLabel" name="label_7">
+                  <property name="text">
+                   <string>Choose boudrate</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QListWidget" name="listWidget_2">
+                  <item>
+                   <property name="text">
+                    <string>125 kbit</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>500 kbit</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>1000 kbit</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QVBoxLayout" name="verticalLayout_8">
+              <item>
+               <spacer name="verticalSpacer_2">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="radioButton">
+                <property name="text">
+                 <string>11 bit</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="radioButton_2">
+                <property name="text">
+                 <string>29 bit</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QRadioButton" name="radioButton_3">
+                <property name="text">
+                 <string>11/29 bit</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <spacer name="verticalSpacer_3">
+                <property name="orientation">
+                 <enum>Qt::Vertical</enum>
+                </property>
+                <property name="sizeHint" stdset="0">
+                 <size>
+                  <width>20</width>
+                  <height>40</height>
+                 </size>
+                </property>
+               </spacer>
+              </item>
+              <item>
+               <layout class="QVBoxLayout" name="verticalLayout_9">
+                <item>
+                 <layout class="QVBoxLayout" name="verticalLayout_10"/>
+                </item>
+               </layout>
+              </item>
+             </layout>
+            </item>
+           </layout>
+          </item>
+          <item>
+           <widget class="QPushButton" name="Connect">
+            <property name="text">
+             <string>Connect</string>
+            </property>
+           </widget>
+          </item>
+         </layout>
+        </item>
+       </layout>
+      </widget>
+     </item>
+    </layout>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1073</width>
+     <width>1180</width>
      <height>26</height>
     </rect>
    </property>

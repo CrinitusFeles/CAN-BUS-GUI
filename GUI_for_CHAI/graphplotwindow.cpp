@@ -90,6 +90,14 @@ int timeRange = 12;
 double stopPosition;
 void GraphPlotWindow::realtimeDataSlot()
 {
+    timeRange = ui->horizontalSlider->value()*ui->spinBox_sec->value() + ui->horizontalSlider_min->value()*ui->spinBox__min->value();
+    int hour, min, sec;
+    hour = timeRange / 3600;
+    min = timeRange % 3600 / 60;
+    sec = timeRange % 3600 % 60;
+    ui->label_timeScale->setText(QString::number(hour) + " h :" + QString::number(min) + " min :" + QString::number(sec) + " sec");
+
+
     dataTimer.setSingleShot(false);
     s1t1 = (double) ui->lineEdit11->text().toDouble();
     s1t2 = (double) ui->lineEdit12->text().toDouble();
@@ -269,16 +277,19 @@ void GraphPlotWindow::on_SaveButton_clicked()
 
 void GraphPlotWindow::on_addButton_11_clicked()
 {
+    ui->pushButton->setEnabled(false);
     ui->addButton_11->setEnabled(false);
     CreateNewGraph("S1T1", "red");
 }
 void GraphPlotWindow::on_addButton_12_clicked()
 {
+    ui->pushButton->setEnabled(false);
     ui->addButton_12->setEnabled(false);
     CreateNewGraph("S1T2", "green");
 }
 void GraphPlotWindow::on_addButton_13_clicked()
 {
+    ui->pushButton->setEnabled(false);
     ui->addButton_13->setEnabled(false);
     CreateNewGraph("S1T3", "blue");
 }
@@ -286,16 +297,19 @@ void GraphPlotWindow::on_addButton_13_clicked()
 
 void GraphPlotWindow::on_addButton_21_clicked()
 {
+    ui->pushButton->setEnabled(false);
     ui->addButton_21->setEnabled(false);
     CreateNewGraph("S2T1", "yellow");
 }
 void GraphPlotWindow::on_addButton_22_clicked()
 {
+    ui->pushButton->setEnabled(false);
     ui->addButton_22->setEnabled(false);
     CreateNewGraph("S2T2", "black");
 }
 void GraphPlotWindow::on_addButton_23_clicked()
 {
+    ui->pushButton->setEnabled(false);
     ui->addButton_23->setEnabled(false);
     CreateNewGraph("S2T3", 25, 100, 200);
 }
@@ -303,65 +317,89 @@ void GraphPlotWindow::on_addButton_23_clicked()
 
 void GraphPlotWindow::on_addButton_31_clicked()
 {
+    ui->pushButton->setEnabled(false);
     ui->addButton_31->setEnabled(false);
     CreateNewGraph("S3T1", 125, 150, 200);
 }
 void GraphPlotWindow::on_addButton_32_clicked()
 {
+    ui->pushButton->setEnabled(false);
     ui->addButton_32->setEnabled(false);
     CreateNewGraph("S3T2", 255, 10, 200);
 }
 void GraphPlotWindow::on_addButton_33_clicked()
 {
+    ui->pushButton->setEnabled(false);
     ui->addButton_33->setEnabled(false);
     CreateNewGraph("S3T3", 25, 200, 200);
 }
 
 void GraphPlotWindow::on_addButton_L1_clicked()
 {
+    ui->pushButton->setEnabled(false);
     ui->addButton_L1->setEnabled(false);
     CreateNewGraph("L1", 255, 200, 20);
 }
 void GraphPlotWindow::on_addButton_L2_clicked()
 {
+    ui->pushButton->setEnabled(false);
     ui->addButton_L2->setEnabled(false);
     CreateNewGraph("L2", 55, 66, 180);
 }
 void GraphPlotWindow::on_addButton_L3_clicked()
 {
+    ui->pushButton->setEnabled(false);
     ui->addButton_L3->setEnabled(false);
     CreateNewGraph("L3", 5, 156, 180);
 }
 
 void GraphPlotWindow::on_pushButton_clicked()
 {
+    ui->pushButton->setEnabled(false);
     ui->addButton_11->setEnabled(false);
     CreateNewGraph("S1T1", "red");
     ui->addButton_12->setEnabled(false);
-    CreateNewGraph("S1T2", "green");
+    CreateNewGraph("S1T2", "red");
     ui->addButton_13->setEnabled(false);
-    CreateNewGraph("S1T3", "blue");
+    CreateNewGraph("S1T3", "red");
     ui->addButton_21->setEnabled(false);
-    CreateNewGraph("S2T1", "yellow");
+    CreateNewGraph("S2T1", "blue");
     ui->addButton_22->setEnabled(false);
-    CreateNewGraph("S2T2", "black");
+    CreateNewGraph("S2T2", "blue");
     ui->addButton_23->setEnabled(false);
-    CreateNewGraph("S2T3", 25, 100, 200);
+    CreateNewGraph("S2T3", "blue");
     ui->addButton_31->setEnabled(false);
-    CreateNewGraph("S3T1", 125, 150, 200);
+    CreateNewGraph("S3T1", "green");
     ui->addButton_32->setEnabled(false);
-    CreateNewGraph("S3T2", 255, 10, 200);
+    CreateNewGraph("S3T2", "green");
     ui->addButton_33->setEnabled(false);
-    CreateNewGraph("S3T3", 25, 200, 200);
+    CreateNewGraph("S3T3", "green");
     ui->addButton_L1->setEnabled(false);
-    CreateNewGraph("L1", 255, 200, 20);
+    CreateNewGraph("L1", "red");
     ui->addButton_L2->setEnabled(false);
-    CreateNewGraph("L2", 55, 66, 180);
+    CreateNewGraph("L2", "blue");
     ui->addButton_L3->setEnabled(false);
-    CreateNewGraph("L3", 5, 156, 180);
+    CreateNewGraph("L3", "green");
 }
 
 void GraphPlotWindow::on_horizontalSlider_sliderMoved(int position)
 {
     timeRange = position;
+    ui->customPlot->replot();
+}
+
+void GraphPlotWindow::on_horizontalSlider_min_sliderMoved(int position)
+{
+    timeRange = position;
+    ui->customPlot->replot();
+}
+
+void GraphPlotWindow::on_spinBox_sec_valueChanged(int arg1)
+{
+    ui->customPlot->replot();
+}
+
+void GraphPlotWindow::on_spinBox__min_valueChanged(int arg1)
+{
+    ui->customPlot->replot();
 }

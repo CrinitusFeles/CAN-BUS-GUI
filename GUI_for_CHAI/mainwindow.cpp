@@ -27,8 +27,8 @@ int baudrateForm = -1;
 int maskForm = 0;
 bool listenmodeForm = false;
 
-double l0[3] = {14986.0, 15000.0, 15024.0};
-double l1[3] = {55986.0, 56000.0, 56011.0};
+double l0[3] = {14990.0, 15024.0, 14972.0};
+double l1[3] = {56007.0, 56011.0, 56012.0};
 double l2[3] = {25000.0, 25000.0, 25000.0};
 
 typedef struct {
@@ -82,11 +82,15 @@ int MainWindow::binfo(void)
         if (CiBoardGetSerial(binfo.brdnum, serialbuf, 256) >= 0) { // board has serial number
             serialbuf[255] = '\0';
             //printf(", serial %s", serialbuf);
+            ui->textEdit->insertPlainText("   serial ");
+            ui->textEdit->insertPlainText(serialbuf);
         }
         //printf("]\n");
 
         for (j = 0; j < 4; j++) {
             if (binfo.chip[j] >= 0) {
+                ui->textEdit->insertPlainText("   channel ");
+                ui->textEdit->insertPlainText(QString::number(binfo.chip[j]));
                 //printf("   channel %d", binfo.chip[j]);
                 if ( CiOpen( (_u8) binfo.chip[j], 0 ) >= 0) {
                     ui->listWidget->currentItem()->setText(ui->listWidget->currentItem()->text()+" free");
@@ -112,8 +116,7 @@ void MainWindow::get_chan(void)
 {
     ui->textEdit->append("CAN adapters:");
     if (binfo() > 0) {
-        ui->textEdit->append("CAN channel to use =>");
-        ui->textEdit->append(QString::number(channelForm));
+        ui->textEdit->append("CAN channel to use =>" + QString::number(channelForm));
         //printf("\nCAN channel to use => ");
         //scanf(" %i", &ch);
         chan = (_u8) channelForm;
@@ -178,7 +181,7 @@ void MainWindow::get_bitrate(void)
 void MainWindow::init_can_channel(void)
 {
     _s16 ret;
-
+    ui->textEdit->append("chan = "+QString::number(chan));
     if ((ret = CiOpen(chan, CIO_CAN11 | CIO_CAN29)) < 0) {
         QMessageBox::critical(this, "Warning", "Error opening CAN channel");
         //fprintf(stdout, "Error opening CAN channel %d, ret = %d\n", chan, ret);
@@ -310,7 +313,7 @@ void MainWindow::slotSingleTrans(){
         singleRead->start(3500);
     }
     else if(!(ui->ListenModBox->isChecked())){
-        ui->label_3->setText("stopped");
+        ui->label_5->setText("stopped");
     }
 
 }
@@ -320,7 +323,7 @@ void MainWindow::slotSingleRead(){
         singleTrans->start();
     }
     else if(!(ui->ListenModBox->isChecked())){
-        ui->label_3->setText("stopped");
+        ui->label_5->setText("stopped");
     }
 
 }
@@ -454,7 +457,8 @@ void MainWindow::on_Connect_clicked()
     else QMessageBox::critical(this, "Warning", "Choose mask");
 
     if(baudrateForm == -1){
-        QMessageBox::critical(this, "Warning", "Choose boudrate");
+        QMessageBox::critical(this, "Warni"
+                                    "ng", "Choose boudrate");
     }
     else if(channelForm == -1){
         QMessageBox::critical(this, "Warning", "Choose channel");
@@ -656,7 +660,7 @@ void MainWindow::on_ListenModBox_stateChanged(int arg1)
         singleTrans->start();
     }
     else if(!(ui->ListenModBox->isChecked())){
-        ui->label_3->setText("stopped");
+        ui->label_5->setText("stopped");
     }
 }
 
@@ -715,4 +719,34 @@ void MainWindow::on_lineEdit_L3_textChanged(const QString &arg1)
 void MainWindow::on_ExitButton_clicked()
 {
     QApplication::quit();
+}
+
+void MainWindow::on_Set_L_Button_clicked()
+{
+    l0[0] = ui->lineEdit_L11->text().toDouble();
+    l0[1] = ui->lineEdit_L12->text().toDouble();
+    l0[2] = ui->lineEdit_L13->text().toDouble();
+
+    l1[0] = ui->lineEdit_L21->text().toDouble();
+    l1[1] = ui->lineEdit_L22->text().toDouble();
+    l1[2] = ui->lineEdit_L23->text().toDouble();
+
+    l2[0] = ui->lineEdit_L31->text().toDouble();
+    l2[1] = ui->lineEdit_L32->text().toDouble();
+    l2[2] = ui->lineEdit_L33->text().toDouble();
+}
+
+void MainWindow::on_Get_L_Button_clicked()
+{
+    ui->lineEdit_L11->setText(QString::number(l0[0]));
+    ui->lineEdit_L12->setText(QString::number(l0[1]));
+    ui->lineEdit_L13->setText(QString::number(l0[2]));
+
+    ui->lineEdit_L21->setText(QString::number(l1[0]));
+    ui->lineEdit_L22->setText(QString::number(l1[1]));
+    ui->lineEdit_L23->setText(QString::number(l1[2]));
+
+    ui->lineEdit_L31->setText(QString::number(l2[0]));
+    ui->lineEdit_L32->setText(QString::number(l2[1]));
+    ui->lineEdit_L33->setText(QString::number(l2[2]));
 }
