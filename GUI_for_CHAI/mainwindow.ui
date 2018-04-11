@@ -412,14 +412,7 @@
            <item>
             <widget class="QCheckBox" name="ListenModBox">
              <property name="text">
-              <string>Listen mod</string>
-             </property>
-            </widget>
-           </item>
-           <item>
-            <widget class="QCheckBox" name="checkBox_2">
-             <property name="text">
-              <string>Show</string>
+              <string>Loop</string>
              </property>
             </widget>
            </item>
@@ -431,6 +424,9 @@
         <layout class="QVBoxLayout" name="verticalLayout_2">
          <item>
           <widget class="QTextEdit" name="textEdit">
+           <property name="verticalScrollBarPolicy">
+            <enum>Qt::ScrollBarAlwaysOff</enum>
+           </property>
            <property name="readOnly">
             <bool>true</bool>
            </property>

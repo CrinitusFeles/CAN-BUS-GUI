@@ -14,7 +14,6 @@ void GraphPlotWindow::CreateNewGraph(QString graphName, int r, int g, int b){
     ui->customPlot->graph()->setName(graphName);
     ui->customPlot->graph()->addToLegend();
 }
-QTime realtime(QTime(0,0,0,0));
 
 
 GraphPlotWindow::GraphPlotWindow(QWidget *parent) :
@@ -24,8 +23,9 @@ GraphPlotWindow::GraphPlotWindow(QWidget *parent) :
     ui->setupUi(this);
 
     ui->lineEditInvisible->setVisible(false);
+    ui->lineEdit_Invisible2->setVisible(false);
     QSharedPointer<QCPAxisTickerTime> timeTicker(new QCPAxisTickerTime);
-    timeTicker->setTimeFormat("%h:%m:%s");
+    timeTicker->setTimeFormat("day %d\n%h:%m:%s");
     ui->customPlot->xAxis->setTicker(timeTicker);
     ui->customPlot->axisRect()->setupFullAxesBox();
     ui->customPlot->yAxis->setRange(-1.2, 1.2);
@@ -88,14 +88,18 @@ int countGraphs;
 unsigned int sum;
 int timeRange = 12;
 double stopPosition;
+//double lastPointKey = 0;
+int days = 0;
+static double lastPointKey = 0;
 void GraphPlotWindow::realtimeDataSlot()
 {
-    timeRange = ui->horizontalSlider->value()*ui->spinBox_sec->value() + ui->horizontalSlider_min->value()*ui->spinBox__min->value();
-    int hour, min, sec;
-    hour = timeRange / 3600;
-    min = timeRange % 3600 / 60;
-    sec = timeRange % 3600 % 60;
-    ui->label_timeScale->setText(QString::number(hour) + " h :" + QString::number(min) + " min :" + QString::number(sec) + " sec");
+    timeRange = ui->Days_slider->value()*ui->spinBox_day->value()+ui->horizontalSlider->value()*ui->spinBox_sec->value() + ui->horizontalSlider_min->value()*ui->spinBox__min->value();
+    int day, hour, min, sec;
+    day = timeRange / 86400;
+    hour = timeRange %86400 / 3600;
+    min = timeRange %86400 % 3600 / 60;
+    sec = timeRange %86400 % 3600 % 60;
+    ui->label_timeScale->setText(QString::number(day) + " d :" +QString::number(hour) + " h :" + QString::number(min) + " min :" + QString::number(sec) + " sec");
 
 
     dataTimer.setSingleShot(false);
@@ -116,7 +120,14 @@ void GraphPlotWindow::realtimeDataSlot()
     static QTime time(QTime(0,0,0,0));
     double key = time.elapsed()/1000.0;
 
+    //ui->lineEdit_L3->setText(QString::number(key));
+    //ui->lineEdit_L1->setText(QString::number(lastPointKey));
+    key = key + 86400*days;
+    ui->lineEdit_Invisible2->setText(QString::number(int(key)%86400/3600)+"."+QString::number(int(key)%3600/60)+"."+QString::number(int(key)%3600%60));
+    if(lastPointKey > key) days++;
     countGraphs = ui->customPlot->graphCount();
+    //ui->lineEdit_L2->setText(QString::number(countGraphs));
+    //ui->lineEdit11->setText(QString::number(days));
 
     if(countGraphs > 0){
         if(ui->PauseButton->text()=="Resume"){
@@ -134,7 +145,8 @@ void GraphPlotWindow::realtimeDataSlot()
 
         }
         else{
-            static double lastPointKey = 0;
+            lastPointKey = 0;
+
             if ((key)-lastPointKey > 0.002) // at most add point every 2 ms
             {
                 ui->lineEditInvisible->setText(QString::number(key));
@@ -221,7 +233,9 @@ void GraphPlotWindow::on_PauseButton_toggled(bool checked)
 {
     if(!checked){
         ui->PauseButton->setText("Resume");
-        dataTimer.start(50);
+
+        dataTimer.stop();
+
         ui->customPlot->replot();
 
         //ui->statusBar->showMessage("Paused");
@@ -229,18 +243,20 @@ void GraphPlotWindow::on_PauseButton_toggled(bool checked)
     else{
         //pauseTimer.start(50);
         ui->PauseButton->setText("Pause");
+        dataTimer.start(50);
+        ui->customPlot->replot();
 
         //ui->lineEdit31->setText(QString::number(currenttime));
-        ui->customPlot->replot();
+        //ui->customPlot->replot();
     }
 }
 
-int count = 0;
 void GraphPlotWindow::on_SaveButton_clicked()
 {
-    count++;
+    QDir().mkdir("GraphsFolder");
+
     if (ui->comboBox->currentText() == "PNG") {
-        QString fileName("D:/Qt/Projects/ReleaseProject/GUIwithTimeGraph/Graphics/customPlot"+QString::number(count)+".png");
+        QString fileName("GraphsFolder/graph "+ui->lineEdit_Invisible2->text()+".png");
         QFile file(fileName);
 
         if (!file.open(QIODevice::WriteOnly))
@@ -251,7 +267,7 @@ void GraphPlotWindow::on_SaveButton_clicked()
         }
     }
     if(ui->comboBox->currentText() == "JPG"){
-        QString fileName("D:/Qt/Projects/ReleaseProject/GUIwithTimeGraph/Graphics/customPlot"+QString::number(count)+".jpg");
+        QString fileName("GraphsFolder/graph "+ui->lineEdit_Invisible2->text()+".jpg");
         QFile file(fileName);
 
         if (!file.open(QIODevice::WriteOnly))
@@ -262,9 +278,8 @@ void GraphPlotWindow::on_SaveButton_clicked()
         }
     }
     if(ui->comboBox->currentText() == "BMP"){
-        QString fileName("D:/Qt/Projects/ReleaseProject/GUIwithTimeGraph/Graphics/customPlot"+QString::number(count)+".bmp");
+        QString fileName("GraphsFolder/graph "+ui->lineEdit_Invisible2->text()+".bmp");
         QFile file(fileName);
-
         if (!file.open(QIODevice::WriteOnly))
         {
             qDebug() << file.errorString();
@@ -272,6 +287,17 @@ void GraphPlotWindow::on_SaveButton_clicked()
             ui->customPlot->saveJpg(fileName);
         }
     }
+    if(ui->comboBox->currentText() == "PDF"){
+        QString fileName("GraphsFolder/graph "+ui->lineEdit_Invisible2->text()+".pdf");
+        QFile file(fileName);
+        if (!file.open(QIODevice::WriteOnly))
+        {
+            qDebug() << file.errorString();
+        } else {
+            ui->customPlot->saveJpg(fileName);
+        }
+    }
+
 }
 
 
