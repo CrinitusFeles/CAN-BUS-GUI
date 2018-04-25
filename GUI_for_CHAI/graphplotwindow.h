@@ -87,6 +87,12 @@ private slots:
 
   void on_spinBox__min_valueChanged(int arg1);
 
+  void on_xAxis_Slider_sliderMoved(int position);
+
+  void on_Days_slider_sliderMoved(int position);
+
+  void on_RestartButton_clicked();
+
 private:
     Ui::GraphPlotWindow *ui;
     QTimer dataTimer, pauseTimer;

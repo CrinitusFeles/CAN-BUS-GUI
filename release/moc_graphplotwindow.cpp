@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_GraphPlotWindow_t {
-    QByteArrayData data[40];
-    char stringdata0[664];
+    QByteArrayData data[43];
+    char stringdata0[744];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -68,7 +68,10 @@ QT_MOC_LITERAL(35, 557, 8), // "position"
 QT_MOC_LITERAL(36, 566, 35), // "on_horizontalSlider_min_slide..."
 QT_MOC_LITERAL(37, 602, 27), // "on_spinBox_sec_valueChanged"
 QT_MOC_LITERAL(38, 630, 4), // "arg1"
-QT_MOC_LITERAL(39, 635, 28) // "on_spinBox__min_valueChanged"
+QT_MOC_LITERAL(39, 635, 28), // "on_spinBox__min_valueChanged"
+QT_MOC_LITERAL(40, 664, 27), // "on_xAxis_Slider_sliderMoved"
+QT_MOC_LITERAL(41, 692, 26), // "on_Days_slider_sliderMoved"
+QT_MOC_LITERAL(42, 719, 24) // "on_RestartButton_clicked"
 
     },
     "GraphPlotWindow\0openWindow\0\0getS1T1\0"
@@ -87,7 +90,10 @@ QT_MOC_LITERAL(39, 635, 28) // "on_spinBox__min_valueChanged"
     "on_horizontalSlider_sliderMoved\0"
     "position\0on_horizontalSlider_min_sliderMoved\0"
     "on_spinBox_sec_valueChanged\0arg1\0"
-    "on_spinBox__min_valueChanged"
+    "on_spinBox__min_valueChanged\0"
+    "on_xAxis_Slider_sliderMoved\0"
+    "on_Days_slider_sliderMoved\0"
+    "on_RestartButton_clicked"
 };
 #undef QT_MOC_LITERAL
 
@@ -97,7 +103,7 @@ static const uint qt_meta_data_GraphPlotWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      34,   14, // methods
+      37,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -105,42 +111,45 @@ static const uint qt_meta_data_GraphPlotWindow[] = {
        1,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    0,  184,    2, 0x06 /* Public */,
+       1,    0,  199,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-       3,    1,  185,    2, 0x0a /* Public */,
-       5,    1,  188,    2, 0x0a /* Public */,
-       6,    1,  191,    2, 0x0a /* Public */,
-       7,    1,  194,    2, 0x0a /* Public */,
-       8,    1,  197,    2, 0x0a /* Public */,
-       9,    1,  200,    2, 0x0a /* Public */,
-      10,    1,  203,    2, 0x0a /* Public */,
-      11,    1,  206,    2, 0x0a /* Public */,
-      12,    1,  209,    2, 0x0a /* Public */,
-      13,    1,  212,    2, 0x0a /* Public */,
-      14,    1,  215,    2, 0x0a /* Public */,
-      15,    1,  218,    2, 0x0a /* Public */,
-      16,    0,  221,    2, 0x08 /* Private */,
-      17,    0,  222,    2, 0x08 /* Private */,
-      18,    1,  223,    2, 0x08 /* Private */,
-      20,    0,  226,    2, 0x08 /* Private */,
-      21,    0,  227,    2, 0x08 /* Private */,
-      22,    0,  228,    2, 0x08 /* Private */,
-      23,    0,  229,    2, 0x08 /* Private */,
-      24,    0,  230,    2, 0x08 /* Private */,
-      25,    0,  231,    2, 0x08 /* Private */,
-      26,    0,  232,    2, 0x08 /* Private */,
-      27,    0,  233,    2, 0x08 /* Private */,
-      28,    0,  234,    2, 0x08 /* Private */,
-      29,    0,  235,    2, 0x08 /* Private */,
-      30,    0,  236,    2, 0x08 /* Private */,
-      31,    0,  237,    2, 0x08 /* Private */,
-      32,    0,  238,    2, 0x08 /* Private */,
-      33,    0,  239,    2, 0x08 /* Private */,
-      34,    1,  240,    2, 0x08 /* Private */,
-      36,    1,  243,    2, 0x08 /* Private */,
-      37,    1,  246,    2, 0x08 /* Private */,
-      39,    1,  249,    2, 0x08 /* Private */,
+       3,    1,  200,    2, 0x0a /* Public */,
+       5,    1,  203,    2, 0x0a /* Public */,
+       6,    1,  206,    2, 0x0a /* Public */,
+       7,    1,  209,    2, 0x0a /* Public */,
+       8,    1,  212,    2, 0x0a /* Public */,
+       9,    1,  215,    2, 0x0a /* Public */,
+      10,    1,  218,    2, 0x0a /* Public */,
+      11,    1,  221,    2, 0x0a /* Public */,
+      12,    1,  224,    2, 0x0a /* Public */,
+      13,    1,  227,    2, 0x0a /* Public */,
+      14,    1,  230,    2, 0x0a /* Public */,
+      15,    1,  233,    2, 0x0a /* Public */,
+      16,    0,  236,    2, 0x08 /* Private */,
+      17,    0,  237,    2, 0x08 /* Private */,
+      18,    1,  238,    2, 0x08 /* Private */,
+      20,    0,  241,    2, 0x08 /* Private */,
+      21,    0,  242,    2, 0x08 /* Private */,
+      22,    0,  243,    2, 0x08 /* Private */,
+      23,    0,  244,    2, 0x08 /* Private */,
+      24,    0,  245,    2, 0x08 /* Private */,
+      25,    0,  246,    2, 0x08 /* Private */,
+      26,    0,  247,    2, 0x08 /* Private */,
+      27,    0,  248,    2, 0x08 /* Private */,
+      28,    0,  249,    2, 0x08 /* Private */,
+      29,    0,  250,    2, 0x08 /* Private */,
+      30,    0,  251,    2, 0x08 /* Private */,
+      31,    0,  252,    2, 0x08 /* Private */,
+      32,    0,  253,    2, 0x08 /* Private */,
+      33,    0,  254,    2, 0x08 /* Private */,
+      34,    1,  255,    2, 0x08 /* Private */,
+      36,    1,  258,    2, 0x08 /* Private */,
+      37,    1,  261,    2, 0x08 /* Private */,
+      39,    1,  264,    2, 0x08 /* Private */,
+      40,    1,  267,    2, 0x08 /* Private */,
+      41,    1,  270,    2, 0x08 /* Private */,
+      42,    0,  273,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void,
@@ -179,6 +188,9 @@ static const uint qt_meta_data_GraphPlotWindow[] = {
     QMetaType::Void, QMetaType::Int,   35,
     QMetaType::Void, QMetaType::Int,   38,
     QMetaType::Void, QMetaType::Int,   38,
+    QMetaType::Void, QMetaType::Int,   35,
+    QMetaType::Void, QMetaType::Int,   35,
+    QMetaType::Void,
 
        0        // eod
 };
@@ -223,6 +235,9 @@ void GraphPlotWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int 
         case 31: _t->on_horizontalSlider_min_sliderMoved((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 32: _t->on_spinBox_sec_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
         case 33: _t->on_spinBox__min_valueChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 34: _t->on_xAxis_Slider_sliderMoved((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 35: _t->on_Days_slider_sliderMoved((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 36: _t->on_RestartButton_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -263,13 +278,13 @@ int GraphPlotWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 34)
+        if (_id < 37)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 34;
+        _id -= 37;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 34)
+        if (_id < 37)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 34;
+        _id -= 37;
     }
     return _id;
 }

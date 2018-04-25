@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1225</width>
-    <height>854</height>
+    <width>1267</width>
+    <height>865</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -19,18 +19,8 @@
      <rect>
       <x>10</x>
       <y>20</y>
-      <width>1191</width>
+      <width>1231</width>
       <height>401</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QLineEdit" name="lineEditInvisible">
-    <property name="geometry">
-     <rect>
-      <x>1130</x>
-      <y>770</y>
-      <width>113</width>
-      <height>22</height>
      </rect>
     </property>
    </widget>
@@ -38,7 +28,7 @@
     <property name="geometry">
      <rect>
       <x>360</x>
-      <y>430</y>
+      <y>480</y>
       <width>461</width>
       <height>26</height>
      </rect>
@@ -73,22 +63,12 @@
      </item>
     </layout>
    </widget>
-   <widget class="QLineEdit" name="lineEdit_Invisible2">
+   <widget class="QWidget" name="layoutWidget">
     <property name="geometry">
      <rect>
-      <x>870</x>
-      <y>430</y>
-      <width>113</width>
-      <height>22</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QWidget" name="">
-    <property name="geometry">
-     <rect>
-      <x>20</x>
-      <y>470</y>
-      <width>1181</width>
+      <x>30</x>
+      <y>510</y>
+      <width>1211</width>
       <height>287</height>
      </rect>
     </property>
@@ -312,6 +292,16 @@
              </property>
             </widget>
            </item>
+           <item>
+            <widget class="QLabel" name="label_8">
+             <property name="text">
+              <string>Delta</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
           </layout>
          </item>
          <item>
@@ -456,19 +446,6 @@
             </layout>
            </item>
            <item>
-            <spacer name="horizontalSpacer">
-             <property name="orientation">
-              <enum>Qt::Horizontal</enum>
-             </property>
-             <property name="sizeHint" stdset="0">
-              <size>
-               <width>40</width>
-               <height>20</height>
-              </size>
-             </property>
-            </spacer>
-           </item>
-           <item>
             <layout class="QVBoxLayout" name="verticalLayout_6">
              <item>
               <widget class="QLineEdit" name="lineEdit_L1">
@@ -518,6 +495,44 @@
              </item>
             </layout>
            </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_16">
+             <item>
+              <widget class="QLineEdit" name="lineEditDelta_1"/>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEditDelta_2"/>
+             </item>
+             <item>
+              <widget class="QLineEdit" name="lineEditDelta_3"/>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QVBoxLayout" name="verticalLayout_17">
+             <item>
+              <widget class="QPushButton" name="addButton_D1">
+               <property name="text">
+                <string>add</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="addButton_D2">
+               <property name="text">
+                <string>add</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QPushButton" name="addButton_D3">
+               <property name="text">
+                <string>add</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
           </layout>
          </item>
          <item>
@@ -553,7 +568,7 @@
             <bool>true</bool>
            </property>
            <property name="checked">
-            <bool>true</bool>
+            <bool>false</bool>
            </property>
           </widget>
          </item>
@@ -618,13 +633,76 @@
      </item>
     </layout>
    </widget>
+   <widget class="QSlider" name="xAxis_Slider">
+    <property name="geometry">
+     <rect>
+      <x>100</x>
+      <y>430</y>
+      <width>1061</width>
+      <height>22</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QWidget" name="layoutWidget">
+    <property name="geometry">
+     <rect>
+      <x>840</x>
+      <y>480</y>
+      <width>283</width>
+      <height>24</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout_11">
+     <item>
+      <widget class="QLineEdit" name="lineEdit_Invisible2"/>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineStartProgramTime"/>
+     </item>
+     <item>
+      <widget class="QLineEdit" name="lineEditInvisible"/>
+     </item>
+    </layout>
+   </widget>
+   <widget class="QCheckBox" name="RTmode">
+    <property name="geometry">
+     <rect>
+      <x>1180</x>
+      <y>430</y>
+      <width>91</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>RT mode</string>
+    </property>
+    <property name="checked">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label_16">
+    <property name="geometry">
+     <rect>
+      <x>40</x>
+      <y>430</y>
+      <width>51</width>
+      <height>16</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>X axis </string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1225</width>
+     <width>1267</width>
      <height>26</height>
     </rect>
    </property>

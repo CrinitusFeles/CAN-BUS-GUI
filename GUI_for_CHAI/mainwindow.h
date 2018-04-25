@@ -112,6 +112,7 @@ private:
     Ui::MainWindow *ui;
     QTimer *timer, *singleRead, *singleTrans;
     GraphPlotWindow *GraphWindow;
+   // QDir dir;
 };
 
 #endif // MAINWINDOW_H

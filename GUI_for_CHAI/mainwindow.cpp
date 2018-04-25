@@ -8,9 +8,11 @@
 #include <stdarg.h>
 #include <time.h>
 #include <chai.h>
+#include <QDir>
 #ifdef WIN32
 #include <windows.h>
 #include <process.h>
+
 #endif
 
 #define CM_RCVBUF_SIZE 64
@@ -21,6 +23,11 @@ _u8 chan;
 int baud;
 _u8 bt0, bt1;
 
+QDir mkdir("Output Files");
+QFile file("Output Files/" + QDate::currentDate().toString("dd.MM.yy")+" _ "+ QTime::currentTime().toString("hh.mm.ss")+".txt");
+//QFile file("Output files/out.txt");
+
+QTextStream writeStream(&file);
 
 int channelForm = -1;
 int baudrateForm = -1;
@@ -37,6 +44,8 @@ typedef struct {
     unsigned char  error_code[3];
 }TO_HOST;
 TO_HOST to_host;
+
+int address;
 
 
 bool isConnected = false;
@@ -206,9 +215,9 @@ void MainWindow::init_can_channel(void)
 
 void MainWindow::Read(){
     canwait_t cw;
+    int *paddress = &address;
     cw.chan = chan;
     cw.wflags = CI_WAIT_RC | CI_WAIT_ER;
-
     canmsg_t rx[CM_RCVBUF_SIZE]; //массив структур (CM_RCVBUF_SIZE = 64)
     int ret = 0;
     int frames = 0;
@@ -223,9 +232,12 @@ void MainWindow::Read(){
             //ui->textEdit->append("Some got");
             if (frames > 0)
             {
+                ui->textEdit->append(QTime::currentTime().toString("hh:mm:ss"));
+
                 for (int i = 0; i < frames; i++)
                 {
                     ui->textEdit->insertPlainText("\nRX id: " + QString::number(rx[i].id, 16));
+                    *paddress = (int)(rx[i].id);
 
                     for(int j = 0; j < rx[i].len; j++)
                     {
@@ -253,9 +265,10 @@ void MainWindow::Read(){
                                 T3=Fira(&to_host.uls_xx[n][8]);
                                 L0 = l0[n] * (T3 - T2) / (T2 - T1);
                                 L = l1[n] - L0 - l2[n];
-                                ui->TimesDisplay->append("S"+QString::number(n)+" T1 = " + QString::number(T1) +
+                                //Level=C−Us_L0∗(OF−R1)/(R2−R1)−Us L2
+                                /*ui->TimesDisplay->append("S"+QString::number(n)+" T1 = " + QString::number(T1) +
                                                          "   T2 = " + QString::number(T2)+"   T3 = " + QString::number(T3) +
-                                                         "   L = " + QString::number(L));
+                                                         "   L = " + QString::number(L));*/
                                 if(n==0){
                                     ui->lineEdit11->setText(QString::number(T1));
                                     ui->lineEdit12->setText(QString::number(T2));
@@ -275,6 +288,34 @@ void MainWindow::Read(){
                                     ui->lineEdit_L3->setText(QString::number(L));
                                 }
                             }
+
+                            ui->TimesDisplay->append("T1 = " + ui->lineEdit11->text() +
+                                                     " \t T2 = " + ui->lineEdit12->text() +
+                                                     " \t T3 = " + ui->lineEdit13->text() +
+                                                     " \t L = "  + ui->lineEdit_L1->text()+
+                                                     " \t\t T1 = " + ui->lineEdit21->text() +
+                                                     " \t T2 = " + ui->lineEdit22->text() +
+                                                     " \t T3 = " + ui->lineEdit23->text() +
+                                                     " \t L = "  + ui->lineEdit_L2->text()+
+                                                     " \t\t T1 = " + ui->lineEdit31->text() +
+                                                     " \t T2 = " + ui->lineEdit32->text() +
+                                                     " \t T3 = " + ui->lineEdit33->text() +
+                                                     " \t L = "  + ui->lineEdit_L3->text()+
+                                                     " \t "+ QTime::currentTime().toString("hh:mm:ss"));
+
+
+                            writeStream << ui->lineEdit11->text() +"\t" + ui->lineEdit12->text() +"\t"+
+                                           ui->lineEdit13->text() +"\t"+ ui->lineEdit_L1->text()+"\t"+
+                                           ui->lineEdit21->text() +"\t"+ ui->lineEdit22->text() +"\t"+
+                                           ui->lineEdit23->text() +"\t"+ ui->lineEdit_L2->text() +"\t"+
+                                           ui->lineEdit31->text() +"\t"+ ui->lineEdit32->text() +"\t"+
+                                           ui->lineEdit33->text() +"\t"+ ui->lineEdit_L3->text() +"\t"+
+                                           QString::number(ui->lineEdit_L2->text().toDouble()-ui->lineEdit_L1->text().toDouble())+"\t"+
+                                           QTime::currentTime().toString("hh:mm:ss")+"\n";
+
+
+
+
                         }
                         break;
                     case 0xBA:
@@ -284,6 +325,7 @@ void MainWindow::Read(){
                         break;
                     }
                 }
+
             }
             else if (frames < 0)
             {
@@ -357,8 +399,25 @@ MainWindow::MainWindow(QWidget *parent) :
 
      //ui->textEdit->append(QString::number(ui->listWidget->currentRow()));
     ui->label_2->size();
-    ui->label_5->setText(QTime::currentTime().toString("hh:mm:ss"));
 
+    if(!file.open(QIODevice::Append | QIODevice::Text)){
+        QMessageBox::critical(this, "Warning", "file error");
+    }
+    else{
+        writeStream << "T1 = \t T2 = \t T3 = \t L = \t T1 = \t T2 = \t T3 = \t L = \t T1 = \t T2 = \t T3 = \t L = \t D = \n";
+    }
+    /*if (!file.open(QIODevice::Append | QIODevice::Text))
+    {
+        qDebug() << file.errorString();
+    }
+    else{
+        writeStream << ui->lineEdit_L11->text() +"\t" + ui->lineEdit_L12->text() +"\t"+
+                       ui->lineEdit_L13->text() +"\t"+ ui->lineEdit_L21->text()+"\t"+
+                       ui->lineEdit_L21->text() +"\t"+ ui->lineEdit22->text() +"\t"+
+                       ui->lineEdit_L23->text() +"\t"+ ui->lineEdit_L32->text() +"\t"+
+                       ui->lineEdit_L31->text() +"\t"+ ui->lineEdit_L32->text() +"\t"+
+                       ui->lineEdit_L33->text() +"\t"+ ui->lineEdit_L33->text();
+    }*/
 
     timer = new QTimer();
     singleRead = new QTimer();
@@ -402,8 +461,10 @@ MainWindow::MainWindow(QWidget *parent) :
 
 MainWindow::~MainWindow()
 {
+    file.close();
     delete ui;
     delete timer;
+
 }
 
 void MainWindow::slotTimerAlarm()
@@ -420,11 +481,15 @@ void MainWindow::slotTimerAlarm()
 
 void MainWindow::on_actionExit_triggered()  //верхняя менюшка
 {
+    file.close();
     QApplication::quit();
 }
 
 void MainWindow::on_StartButton_clicked()
 {
+    /*int *paddress = &address;
+    *paddress = 11;
+    ui->lineEdit_L33->setText(QString::number(address));*/
     GraphWindow->show();
 
 }
@@ -457,8 +522,7 @@ void MainWindow::on_Connect_clicked()
     else QMessageBox::critical(this, "Warning", "Choose mask");
 
     if(baudrateForm == -1){
-        QMessageBox::critical(this, "Warni"
-                                    "ng", "Choose boudrate");
+        QMessageBox::critical(this, "Warning", "Choose boudrate");
     }
     else if(channelForm == -1){
         QMessageBox::critical(this, "Warning", "Choose channel");
@@ -520,14 +584,14 @@ void MainWindow::on_Connect_clicked()
             ui->textEdit->append("Failed transmition");
         }
 
-        ui->textEdit->insertPlainText("\nTX ID: 0x" + QString::number(tx.id, 16) + "    Length: " + QString::number(tx.len));
-        for(int j = 0; j < tx.len; j++){
-            ui->textEdit->insertPlainText("    # 0x" + QString::number(tx.data[j], 16));
-        }
+        printMassege(&tx);
+
+        Read();
+        ui->lineEdit_L33->setText(QString::number(address));
 
 
-
-        tx.id = 0x602;
+        /*
+        tx.id = 0x601;
         for(int j = 0; j < 8; j++){
             tx.data[j] = 0;
         }
@@ -546,14 +610,14 @@ void MainWindow::on_Connect_clicked()
         for(int j = 0; j < tx.len; j++){
             ui->textEdit->insertPlainText("    # 0x" + QString::number(tx.data[j], 16));
         }
-
+        */
 }
 
 
 void MainWindow::GetTime(){
     canmsg_t tx;
     int ret = 0;
-    tx.id = 0x602;
+    tx.id = 0x601;
     tx.len = 8;
     for(int j = 0; j < 8; j++){
         tx.data[j] = 0;
@@ -587,7 +651,7 @@ void MainWindow::on_TestModOffButton_clicked()
 {
     canmsg_t tx;
     int ret = 0;
-    tx.id = 0x602;
+    tx.id = 0x601;
     tx.len = 8;
     for(int j = 0; j < 8; j++){
         tx.data[j] = 0;
@@ -614,7 +678,7 @@ void MainWindow::on_TestModOnButton_clicked()
 {
     canmsg_t tx;
     int ret = 0;
-    tx.id = 0x602;
+    tx.id = 0x601;
     tx.len = 8;
     for(int j = 0; j < 8; j++){
         tx.data[j] = 0;
@@ -718,6 +782,7 @@ void MainWindow::on_lineEdit_L3_textChanged(const QString &arg1)
 
 void MainWindow::on_ExitButton_clicked()
 {
+    file.close();
     QApplication::quit();
 }
 

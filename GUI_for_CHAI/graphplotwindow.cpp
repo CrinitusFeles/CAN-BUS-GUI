@@ -24,6 +24,7 @@ GraphPlotWindow::GraphPlotWindow(QWidget *parent) :
 
     ui->lineEditInvisible->setVisible(false);
     ui->lineEdit_Invisible2->setVisible(false);
+    ui->lineStartProgramTime->setVisible(false);
     QSharedPointer<QCPAxisTickerTime> timeTicker(new QCPAxisTickerTime);
     timeTicker->setTimeFormat("day %d\n%h:%m:%s");
     ui->customPlot->xAxis->setTicker(timeTicker);
@@ -88,8 +89,11 @@ int countGraphs;
 unsigned int sum;
 int timeRange = 12;
 double stopPosition;
+int xAxis_position;
 //double lastPointKey = 0;
 int days = 0;
+bool isStarted = false;
+double deltaLevel;
 static double lastPointKey = 0;
 void GraphPlotWindow::realtimeDataSlot()
 {
@@ -117,6 +121,9 @@ void GraphPlotWindow::realtimeDataSlot()
     L2 = (double) ui->lineEdit_L2->text().toDouble();
     L3 = (double) ui->lineEdit_L3->text().toDouble();
 
+    deltaLevel = L2 - L1;
+    ui->lineEditDelta_1->setText(QString::number(deltaLevel));
+
     static QTime time(QTime(0,0,0,0));
     double key = time.elapsed()/1000.0;
 
@@ -135,12 +142,13 @@ void GraphPlotWindow::realtimeDataSlot()
 
             //ui->customPlot->setInteractions(QCP::iRangeDrag | QCP::iRangeZoom | QCP::iSelectPlottables | QCP::iSelectLegend);
 
-            double point = ui->lineEditInvisible->text().toDouble();
-            ui->customPlot->xAxis->setRange(point, timeRange, Qt::AlignCenter);
+            int stopTime = ui->lineEditInvisible->text().toInt();
+            ui->xAxis_Slider->setMaximum(stopTime);
+            ui->customPlot->xAxis->setRange(ui->xAxis_Slider->value(), timeRange, Qt::AlignCenter); //dont work
             //ui->lineEdit22->setText(QString::number());
-            //ui->lineEdit31->setText("pause " + QString::number(key));
+            //ui->lineEdit31->setText("pause ");
             //ui->lineEdit32->setText(QString::number(ui->customPlot->graph()->dataCount()));
-
+            ui->customPlot->replot();
 
 
         }
@@ -174,6 +182,8 @@ void GraphPlotWindow::realtimeDataSlot()
                     if(ui->customPlot->graph(i)->name() == "L2") ui->customPlot->graph(i)->addData(key, L2);
                     if(ui->customPlot->graph(i)->name() == "L3") ui->customPlot->graph(i)->addData(key, L3);
 
+                    if(ui->customPlot->graph(i)->name() == "D1") ui->customPlot->graph(i)->addData(key, deltaLevel);
+
                 }
 
                 // rescale value (vertical) axis to fit the current data:
@@ -184,7 +194,13 @@ void GraphPlotWindow::realtimeDataSlot()
 
                 lastPointKey = key;
                 // make key axis range scroll with the data (at a constant range size of 8):
-                ui->customPlot->xAxis->setRange(key, timeRange, Qt::AlignCenter);
+                if(ui->RTmode->isChecked()){
+                    ui->customPlot->xAxis->setRange(key, timeRange, Qt::AlignCenter);
+                }
+                else{
+                    ui->xAxis_Slider->setMaximum(key);
+                    ui->customPlot->xAxis->setRange(ui->xAxis_Slider->value(), timeRange, Qt::AlignCenter);
+                }
                 ui->customPlot->replot();
 
                 //ui->customPlot->graph(0)->set
@@ -211,11 +227,15 @@ void GraphPlotWindow::realtimeDataSlot()
     //if(ui->HideButton->isDown()) CreateNewGraph("new graph");
 
     if(ui->RestartButton->isDown()){
-        time.setHMS(0,0,0,0);
-        sum = 0;
-        for(int i = 0; i < countGraphs; i++){
-            ui->customPlot->graph(i)->data()->clear();
+        int ret = QMessageBox::question(this, "Attention!", "Are you sure?");
+        if(ret == QMessageBox::Yes){
+            time.setHMS(0,0,0,0);
+            sum = 0;
+            for(int i = 0; i < countGraphs; i++){
+                ui->customPlot->graph(i)->data()->clear();
+            }
         }
+
         ui->customPlot->replot();
     }
 
@@ -236,12 +256,31 @@ void GraphPlotWindow::on_PauseButton_toggled(bool checked)
 
         dataTimer.stop();
 
+
+        double stopTime = ui->lineEditInvisible->text().toDouble();
+        ui->xAxis_Slider->setMaximum(stopTime+10);
+        ui->xAxis_Slider->setMinimum(ui->lineStartProgramTime->text().toDouble());
+
+        //ui->lineEdit31->setText(QString::number(stopTime));
+        //ui->lineEdit32->setText(QString::number(ui->customPlot->graph()->dataCount()));
+        ui->xAxis_Slider->setValue(stopTime+1);
+
+
         ui->customPlot->replot();
+
+
+        //ui->customPlot->replot();
 
         //ui->statusBar->showMessage("Paused");
     }
     else{
-        //pauseTimer.start(50);
+        QTime startProgram(0,0,0);
+        if(!isStarted){
+
+            ui->lineStartProgramTime->setText(QString::number(startProgram.elapsed()/1000));
+
+            isStarted = true;
+        }
         ui->PauseButton->setText("Pause");
         dataTimer.start(50);
         ui->customPlot->replot();
@@ -256,7 +295,7 @@ void GraphPlotWindow::on_SaveButton_clicked()
     QDir().mkdir("GraphsFolder");
 
     if (ui->comboBox->currentText() == "PNG") {
-        QString fileName("GraphsFolder/graph "+ui->lineEdit_Invisible2->text()+".png");
+        QString fileName("GraphsFolder/graph "+QDate::currentDate().toString("dd.MM.yy")+" _ "+QTime::currentTime().toString("hh.mm.ss")+".png");
         QFile file(fileName);
 
         if (!file.open(QIODevice::WriteOnly))
@@ -311,13 +350,13 @@ void GraphPlotWindow::on_addButton_12_clicked()
 {
     ui->pushButton->setEnabled(false);
     ui->addButton_12->setEnabled(false);
-    CreateNewGraph("S1T2", "green");
+    CreateNewGraph("S1T2", "red");
 }
 void GraphPlotWindow::on_addButton_13_clicked()
 {
     ui->pushButton->setEnabled(false);
     ui->addButton_13->setEnabled(false);
-    CreateNewGraph("S1T3", "blue");
+    CreateNewGraph("S1T3", "red");
 }
 
 
@@ -325,19 +364,19 @@ void GraphPlotWindow::on_addButton_21_clicked()
 {
     ui->pushButton->setEnabled(false);
     ui->addButton_21->setEnabled(false);
-    CreateNewGraph("S2T1", "yellow");
+    CreateNewGraph("S2T1", "blue");
 }
 void GraphPlotWindow::on_addButton_22_clicked()
 {
     ui->pushButton->setEnabled(false);
     ui->addButton_22->setEnabled(false);
-    CreateNewGraph("S2T2", "black");
+    CreateNewGraph("S2T2", "blue");
 }
 void GraphPlotWindow::on_addButton_23_clicked()
 {
     ui->pushButton->setEnabled(false);
     ui->addButton_23->setEnabled(false);
-    CreateNewGraph("S2T3", 25, 100, 200);
+    CreateNewGraph("S2T3", "blue");
 }
 
 
@@ -345,38 +384,38 @@ void GraphPlotWindow::on_addButton_31_clicked()
 {
     ui->pushButton->setEnabled(false);
     ui->addButton_31->setEnabled(false);
-    CreateNewGraph("S3T1", 125, 150, 200);
+    CreateNewGraph("S3T1", "green");
 }
 void GraphPlotWindow::on_addButton_32_clicked()
 {
     ui->pushButton->setEnabled(false);
     ui->addButton_32->setEnabled(false);
-    CreateNewGraph("S3T2", 255, 10, 200);
+    CreateNewGraph("S3T2", "green");
 }
 void GraphPlotWindow::on_addButton_33_clicked()
 {
     ui->pushButton->setEnabled(false);
     ui->addButton_33->setEnabled(false);
-    CreateNewGraph("S3T3", 25, 200, 200);
+    CreateNewGraph("S3T3", "green");
 }
 
 void GraphPlotWindow::on_addButton_L1_clicked()
 {
     ui->pushButton->setEnabled(false);
     ui->addButton_L1->setEnabled(false);
-    CreateNewGraph("L1", 255, 200, 20);
+    CreateNewGraph("L1", "red");
 }
 void GraphPlotWindow::on_addButton_L2_clicked()
 {
     ui->pushButton->setEnabled(false);
     ui->addButton_L2->setEnabled(false);
-    CreateNewGraph("L2", 55, 66, 180);
+    CreateNewGraph("L2", "blue");
 }
 void GraphPlotWindow::on_addButton_L3_clicked()
 {
     ui->pushButton->setEnabled(false);
     ui->addButton_L3->setEnabled(false);
-    CreateNewGraph("L3", 5, 156, 180);
+    CreateNewGraph("L3", "green");
 }
 
 void GraphPlotWindow::on_pushButton_clicked()
@@ -406,17 +445,41 @@ void GraphPlotWindow::on_pushButton_clicked()
     CreateNewGraph("L2", "blue");
     ui->addButton_L3->setEnabled(false);
     CreateNewGraph("L3", "green");
+    ui->addButton_D1->setEnabled(false);
+    CreateNewGraph("D1", "black");
 }
 
 void GraphPlotWindow::on_horizontalSlider_sliderMoved(int position)
 {
     timeRange = position;
+    if(ui->PauseButton->text()=="Resume"){
+        timeRange = ui->Days_slider->value()*ui->spinBox_day->value()+ui->horizontalSlider->value()*ui->spinBox_sec->value() + ui->horizontalSlider_min->value()*ui->spinBox__min->value();
+        int day, hour, min, sec;
+        day = timeRange / 86400;
+        hour = timeRange %86400 / 3600;
+        min = timeRange %86400 % 3600 / 60;
+        sec = timeRange %86400 % 3600 % 60;
+        ui->label_timeScale->setText(QString::number(day) + " d :" +QString::number(hour) + " h :" + QString::number(min) + " min :" + QString::number(sec) + " sec");
+        ui->customPlot->xAxis->setRange(ui->xAxis_Slider->value(), timeRange, Qt::AlignCenter); //dont work
+        ui->customPlot->replot();
+    }
     ui->customPlot->replot();
 }
 
 void GraphPlotWindow::on_horizontalSlider_min_sliderMoved(int position)
 {
     timeRange = position;
+    if(ui->PauseButton->text()=="Resume"){
+        timeRange = ui->Days_slider->value()*ui->spinBox_day->value()+ui->horizontalSlider->value()*ui->spinBox_sec->value() + ui->horizontalSlider_min->value()*ui->spinBox__min->value();
+        int day, hour, min, sec;
+        day = timeRange / 86400;
+        hour = timeRange %86400 / 3600;
+        min = timeRange %86400 % 3600 / 60;
+        sec = timeRange %86400 % 3600 % 60;
+        ui->label_timeScale->setText(QString::number(day) + " d :" +QString::number(hour) + " h :" + QString::number(min) + " min :" + QString::number(sec) + " sec");
+        ui->customPlot->xAxis->setRange(ui->xAxis_Slider->value(), timeRange, Qt::AlignCenter); //dont work
+        ui->customPlot->replot();
+    }
     ui->customPlot->replot();
 }
 
@@ -428,4 +491,44 @@ void GraphPlotWindow::on_spinBox_sec_valueChanged(int arg1)
 void GraphPlotWindow::on_spinBox__min_valueChanged(int arg1)
 {
     ui->customPlot->replot();
+}
+
+void GraphPlotWindow::on_xAxis_Slider_sliderMoved(int position)
+{
+    xAxis_position = position;
+    ui->RTmode->setChecked(false);
+    if(ui->PauseButton->text()=="Resume"){
+        timeRange = ui->Days_slider->value()*ui->spinBox_day->value()+ui->horizontalSlider->value()*ui->spinBox_sec->value() + ui->horizontalSlider_min->value()*ui->spinBox__min->value();
+
+        ui->customPlot->xAxis->setRange(ui->xAxis_Slider->value(), timeRange, Qt::AlignCenter); //dont work
+        ui->customPlot->replot();
+    }
+}
+
+void GraphPlotWindow::on_Days_slider_sliderMoved(int position)
+{
+    if(ui->PauseButton->text()=="Resume"){
+        timeRange = ui->Days_slider->value()*ui->spinBox_day->value()+ui->horizontalSlider->value()*ui->spinBox_sec->value() + ui->horizontalSlider_min->value()*ui->spinBox__min->value();
+        int day, hour, min, sec;
+        day = timeRange / 86400;
+        hour = timeRange %86400 / 3600;
+        min = timeRange %86400 % 3600 / 60;
+        sec = timeRange %86400 % 3600 % 60;
+        ui->label_timeScale->setText(QString::number(day) + " d :" +QString::number(hour) + " h :" + QString::number(min) + " min :" + QString::number(sec) + " sec");
+        ui->customPlot->xAxis->setRange(ui->xAxis_Slider->value(), timeRange, Qt::AlignCenter); //dont work
+        ui->customPlot->replot();
+    }
+}
+
+void GraphPlotWindow::on_RestartButton_clicked()
+{
+
+    int ret = QMessageBox::question(this, "Attention!", "Are you sure?");
+    if(ret == QMessageBox::Yes){
+        for(int i = 0; i < countGraphs; i++){
+            ui->customPlot->graph(i)->data()->clear();
+        }
+    }
+    ui->customPlot->replot();
+
 }
