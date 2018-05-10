@@ -3,7 +3,7 @@
 
 #include <QMainWindow>
 #include "qcustomplot.h"
-//#include "mainwindow.h"
+
 #include <QTimer>
 
 namespace Ui {
@@ -92,6 +92,9 @@ private slots:
   void on_Days_slider_sliderMoved(int position);
 
   void on_RestartButton_clicked();
+
+  void on_addButton_D1_clicked();
+
 
 private:
     Ui::GraphPlotWindow *ui;

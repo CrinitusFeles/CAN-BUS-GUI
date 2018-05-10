@@ -573,6 +573,13 @@
           </widget>
          </item>
          <item>
+          <widget class="QPushButton" name="OpenButton">
+           <property name="text">
+            <string>Open</string>
+           </property>
+          </widget>
+         </item>
+         <item>
           <layout class="QHBoxLayout" name="horizontalLayout">
            <property name="spacing">
             <number>0</number>

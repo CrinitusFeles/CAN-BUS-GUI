@@ -19,8 +19,8 @@
 
 QT_BEGIN_MOC_NAMESPACE
 struct qt_meta_stringdata_MainWindow_t {
-    QByteArrayData data[45];
-    char stringdata0[881];
+    QByteArrayData data[46];
+    char stringdata0[896];
 };
 #define QT_MOC_LITERAL(idx, ofs, len) \
     Q_STATIC_BYTE_ARRAY_DATA_HEADER_INITIALIZER_WITH_OFFSET(len, \
@@ -47,33 +47,34 @@ QT_MOC_LITERAL(14, 156, 10), // "L3_Changed"
 QT_MOC_LITERAL(15, 167, 14), // "slotTimerAlarm"
 QT_MOC_LITERAL(16, 182, 14), // "slotSingleRead"
 QT_MOC_LITERAL(17, 197, 15), // "slotSingleTrans"
-QT_MOC_LITERAL(18, 213, 23), // "on_actionExit_triggered"
-QT_MOC_LITERAL(19, 237, 22), // "on_StartButton_clicked"
-QT_MOC_LITERAL(20, 260, 25), // "on_TransmitButton_clicked"
-QT_MOC_LITERAL(21, 286, 25), // "on_SettingsButton_clicked"
-QT_MOC_LITERAL(22, 312, 18), // "on_Connect_clicked"
-QT_MOC_LITERAL(23, 331, 21), // "on_StopButton_clicked"
-QT_MOC_LITERAL(24, 353, 21), // "on_ReadButton_clicked"
-QT_MOC_LITERAL(25, 375, 26), // "on_TestModOnButton_clicked"
-QT_MOC_LITERAL(26, 402, 27), // "on_TestModOffButton_clicked"
-QT_MOC_LITERAL(27, 430, 31), // "on_GetTimeAverageButton_clicked"
-QT_MOC_LITERAL(28, 462, 28), // "on_ListenModBox_stateChanged"
-QT_MOC_LITERAL(29, 491, 4), // "arg1"
-QT_MOC_LITERAL(30, 496, 25), // "on_lineEdit11_textChanged"
-QT_MOC_LITERAL(31, 522, 25), // "on_lineEdit31_textChanged"
-QT_MOC_LITERAL(32, 548, 26), // "on_lineEdit_L1_textChanged"
-QT_MOC_LITERAL(33, 575, 21), // "on_ExitButton_clicked"
-QT_MOC_LITERAL(34, 597, 25), // "on_lineEdit21_textChanged"
-QT_MOC_LITERAL(35, 623, 25), // "on_lineEdit12_textChanged"
-QT_MOC_LITERAL(36, 649, 25), // "on_lineEdit13_textChanged"
-QT_MOC_LITERAL(37, 675, 25), // "on_lineEdit22_textChanged"
-QT_MOC_LITERAL(38, 701, 25), // "on_lineEdit23_textChanged"
-QT_MOC_LITERAL(39, 727, 25), // "on_lineEdit32_textChanged"
-QT_MOC_LITERAL(40, 753, 25), // "on_lineEdit33_textChanged"
-QT_MOC_LITERAL(41, 779, 26), // "on_lineEdit_L2_textChanged"
-QT_MOC_LITERAL(42, 806, 26), // "on_lineEdit_L3_textChanged"
-QT_MOC_LITERAL(43, 833, 23), // "on_Set_L_Button_clicked"
-QT_MOC_LITERAL(44, 857, 23) // "on_Get_L_Button_clicked"
+QT_MOC_LITERAL(18, 213, 14), // "OpenFileSystem"
+QT_MOC_LITERAL(19, 228, 23), // "on_actionExit_triggered"
+QT_MOC_LITERAL(20, 252, 22), // "on_StartButton_clicked"
+QT_MOC_LITERAL(21, 275, 25), // "on_TransmitButton_clicked"
+QT_MOC_LITERAL(22, 301, 25), // "on_SettingsButton_clicked"
+QT_MOC_LITERAL(23, 327, 18), // "on_Connect_clicked"
+QT_MOC_LITERAL(24, 346, 21), // "on_StopButton_clicked"
+QT_MOC_LITERAL(25, 368, 21), // "on_ReadButton_clicked"
+QT_MOC_LITERAL(26, 390, 26), // "on_TestModOnButton_clicked"
+QT_MOC_LITERAL(27, 417, 27), // "on_TestModOffButton_clicked"
+QT_MOC_LITERAL(28, 445, 31), // "on_GetTimeAverageButton_clicked"
+QT_MOC_LITERAL(29, 477, 28), // "on_ListenModBox_stateChanged"
+QT_MOC_LITERAL(30, 506, 4), // "arg1"
+QT_MOC_LITERAL(31, 511, 25), // "on_lineEdit11_textChanged"
+QT_MOC_LITERAL(32, 537, 25), // "on_lineEdit31_textChanged"
+QT_MOC_LITERAL(33, 563, 26), // "on_lineEdit_L1_textChanged"
+QT_MOC_LITERAL(34, 590, 21), // "on_ExitButton_clicked"
+QT_MOC_LITERAL(35, 612, 25), // "on_lineEdit21_textChanged"
+QT_MOC_LITERAL(36, 638, 25), // "on_lineEdit12_textChanged"
+QT_MOC_LITERAL(37, 664, 25), // "on_lineEdit13_textChanged"
+QT_MOC_LITERAL(38, 690, 25), // "on_lineEdit22_textChanged"
+QT_MOC_LITERAL(39, 716, 25), // "on_lineEdit23_textChanged"
+QT_MOC_LITERAL(40, 742, 25), // "on_lineEdit32_textChanged"
+QT_MOC_LITERAL(41, 768, 25), // "on_lineEdit33_textChanged"
+QT_MOC_LITERAL(42, 794, 26), // "on_lineEdit_L2_textChanged"
+QT_MOC_LITERAL(43, 821, 26), // "on_lineEdit_L3_textChanged"
+QT_MOC_LITERAL(44, 848, 23), // "on_Set_L_Button_clicked"
+QT_MOC_LITERAL(45, 872, 23) // "on_Get_L_Button_clicked"
 
     },
     "MainWindow\0S1T1_Changed\0\0text\0"
@@ -82,8 +83,8 @@ QT_MOC_LITERAL(44, 857, 23) // "on_Get_L_Button_clicked"
     "S3T2_Changed\0S3T3_Changed\0L1_Changed\0"
     "L2_Changed\0L3_Changed\0slotTimerAlarm\0"
     "slotSingleRead\0slotSingleTrans\0"
-    "on_actionExit_triggered\0on_StartButton_clicked\0"
-    "on_TransmitButton_clicked\0"
+    "OpenFileSystem\0on_actionExit_triggered\0"
+    "on_StartButton_clicked\0on_TransmitButton_clicked\0"
     "on_SettingsButton_clicked\0on_Connect_clicked\0"
     "on_StopButton_clicked\0on_ReadButton_clicked\0"
     "on_TestModOnButton_clicked\0"
@@ -112,7 +113,7 @@ static const uint qt_meta_data_MainWindow[] = {
        7,       // revision
        0,       // classname
        0,    0, // classinfo
-      41,   14, // methods
+      42,   14, // methods
        0,    0, // properties
        0,    0, // enums/sets
        0,    0, // constructors
@@ -120,49 +121,50 @@ static const uint qt_meta_data_MainWindow[] = {
       12,       // signalCount
 
  // signals: name, argc, parameters, tag, flags
-       1,    1,  219,    2, 0x06 /* Public */,
-       4,    1,  222,    2, 0x06 /* Public */,
-       5,    1,  225,    2, 0x06 /* Public */,
-       6,    1,  228,    2, 0x06 /* Public */,
-       7,    1,  231,    2, 0x06 /* Public */,
-       8,    1,  234,    2, 0x06 /* Public */,
-       9,    1,  237,    2, 0x06 /* Public */,
-      10,    1,  240,    2, 0x06 /* Public */,
-      11,    1,  243,    2, 0x06 /* Public */,
-      12,    1,  246,    2, 0x06 /* Public */,
-      13,    1,  249,    2, 0x06 /* Public */,
-      14,    1,  252,    2, 0x06 /* Public */,
+       1,    1,  224,    2, 0x06 /* Public */,
+       4,    1,  227,    2, 0x06 /* Public */,
+       5,    1,  230,    2, 0x06 /* Public */,
+       6,    1,  233,    2, 0x06 /* Public */,
+       7,    1,  236,    2, 0x06 /* Public */,
+       8,    1,  239,    2, 0x06 /* Public */,
+       9,    1,  242,    2, 0x06 /* Public */,
+      10,    1,  245,    2, 0x06 /* Public */,
+      11,    1,  248,    2, 0x06 /* Public */,
+      12,    1,  251,    2, 0x06 /* Public */,
+      13,    1,  254,    2, 0x06 /* Public */,
+      14,    1,  257,    2, 0x06 /* Public */,
 
  // slots: name, argc, parameters, tag, flags
-      15,    0,  255,    2, 0x08 /* Private */,
-      16,    0,  256,    2, 0x08 /* Private */,
-      17,    0,  257,    2, 0x08 /* Private */,
-      18,    0,  258,    2, 0x08 /* Private */,
-      19,    0,  259,    2, 0x08 /* Private */,
-      20,    0,  260,    2, 0x08 /* Private */,
-      21,    0,  261,    2, 0x08 /* Private */,
-      22,    0,  262,    2, 0x08 /* Private */,
-      23,    0,  263,    2, 0x08 /* Private */,
-      24,    0,  264,    2, 0x08 /* Private */,
-      25,    0,  265,    2, 0x08 /* Private */,
-      26,    0,  266,    2, 0x08 /* Private */,
-      27,    0,  267,    2, 0x08 /* Private */,
-      28,    1,  268,    2, 0x08 /* Private */,
-      30,    1,  271,    2, 0x08 /* Private */,
-      31,    1,  274,    2, 0x08 /* Private */,
-      32,    1,  277,    2, 0x08 /* Private */,
-      33,    0,  280,    2, 0x08 /* Private */,
-      34,    1,  281,    2, 0x08 /* Private */,
-      35,    1,  284,    2, 0x08 /* Private */,
-      36,    1,  287,    2, 0x08 /* Private */,
-      37,    1,  290,    2, 0x08 /* Private */,
-      38,    1,  293,    2, 0x08 /* Private */,
-      39,    1,  296,    2, 0x08 /* Private */,
-      40,    1,  299,    2, 0x08 /* Private */,
-      41,    1,  302,    2, 0x08 /* Private */,
-      42,    1,  305,    2, 0x08 /* Private */,
-      43,    0,  308,    2, 0x08 /* Private */,
-      44,    0,  309,    2, 0x08 /* Private */,
+      15,    0,  260,    2, 0x08 /* Private */,
+      16,    0,  261,    2, 0x08 /* Private */,
+      17,    0,  262,    2, 0x08 /* Private */,
+      18,    0,  263,    2, 0x08 /* Private */,
+      19,    0,  264,    2, 0x08 /* Private */,
+      20,    0,  265,    2, 0x08 /* Private */,
+      21,    0,  266,    2, 0x08 /* Private */,
+      22,    0,  267,    2, 0x08 /* Private */,
+      23,    0,  268,    2, 0x08 /* Private */,
+      24,    0,  269,    2, 0x08 /* Private */,
+      25,    0,  270,    2, 0x08 /* Private */,
+      26,    0,  271,    2, 0x08 /* Private */,
+      27,    0,  272,    2, 0x08 /* Private */,
+      28,    0,  273,    2, 0x08 /* Private */,
+      29,    1,  274,    2, 0x08 /* Private */,
+      31,    1,  277,    2, 0x08 /* Private */,
+      32,    1,  280,    2, 0x08 /* Private */,
+      33,    1,  283,    2, 0x08 /* Private */,
+      34,    0,  286,    2, 0x08 /* Private */,
+      35,    1,  287,    2, 0x08 /* Private */,
+      36,    1,  290,    2, 0x08 /* Private */,
+      37,    1,  293,    2, 0x08 /* Private */,
+      38,    1,  296,    2, 0x08 /* Private */,
+      39,    1,  299,    2, 0x08 /* Private */,
+      40,    1,  302,    2, 0x08 /* Private */,
+      41,    1,  305,    2, 0x08 /* Private */,
+      42,    1,  308,    2, 0x08 /* Private */,
+      43,    1,  311,    2, 0x08 /* Private */,
+      44,    0,  314,    2, 0x08 /* Private */,
+      45,    0,  315,    2, 0x08 /* Private */,
 
  // signals: parameters
     QMetaType::Void, QMetaType::QString,    3,
@@ -192,20 +194,21 @@ static const uint qt_meta_data_MainWindow[] = {
     QMetaType::Void,
     QMetaType::Void,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::Int,   29,
-    QMetaType::Void, QMetaType::QString,   29,
-    QMetaType::Void, QMetaType::QString,   29,
-    QMetaType::Void, QMetaType::QString,   29,
     QMetaType::Void,
-    QMetaType::Void, QMetaType::QString,   29,
-    QMetaType::Void, QMetaType::QString,   29,
-    QMetaType::Void, QMetaType::QString,   29,
-    QMetaType::Void, QMetaType::QString,   29,
-    QMetaType::Void, QMetaType::QString,   29,
-    QMetaType::Void, QMetaType::QString,   29,
-    QMetaType::Void, QMetaType::QString,   29,
-    QMetaType::Void, QMetaType::QString,   29,
-    QMetaType::Void, QMetaType::QString,   29,
+    QMetaType::Void, QMetaType::Int,   30,
+    QMetaType::Void, QMetaType::QString,   30,
+    QMetaType::Void, QMetaType::QString,   30,
+    QMetaType::Void, QMetaType::QString,   30,
+    QMetaType::Void,
+    QMetaType::Void, QMetaType::QString,   30,
+    QMetaType::Void, QMetaType::QString,   30,
+    QMetaType::Void, QMetaType::QString,   30,
+    QMetaType::Void, QMetaType::QString,   30,
+    QMetaType::Void, QMetaType::QString,   30,
+    QMetaType::Void, QMetaType::QString,   30,
+    QMetaType::Void, QMetaType::QString,   30,
+    QMetaType::Void, QMetaType::QString,   30,
+    QMetaType::Void, QMetaType::QString,   30,
     QMetaType::Void,
     QMetaType::Void,
 
@@ -233,32 +236,33 @@ void MainWindow::qt_static_metacall(QObject *_o, QMetaObject::Call _c, int _id, 
         case 12: _t->slotTimerAlarm(); break;
         case 13: _t->slotSingleRead(); break;
         case 14: _t->slotSingleTrans(); break;
-        case 15: _t->on_actionExit_triggered(); break;
-        case 16: _t->on_StartButton_clicked(); break;
-        case 17: _t->on_TransmitButton_clicked(); break;
-        case 18: _t->on_SettingsButton_clicked(); break;
-        case 19: _t->on_Connect_clicked(); break;
-        case 20: _t->on_StopButton_clicked(); break;
-        case 21: _t->on_ReadButton_clicked(); break;
-        case 22: _t->on_TestModOnButton_clicked(); break;
-        case 23: _t->on_TestModOffButton_clicked(); break;
-        case 24: _t->on_GetTimeAverageButton_clicked(); break;
-        case 25: _t->on_ListenModBox_stateChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
-        case 26: _t->on_lineEdit11_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 27: _t->on_lineEdit31_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 28: _t->on_lineEdit_L1_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 29: _t->on_ExitButton_clicked(); break;
-        case 30: _t->on_lineEdit21_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 31: _t->on_lineEdit12_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 32: _t->on_lineEdit13_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 33: _t->on_lineEdit22_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 34: _t->on_lineEdit23_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 35: _t->on_lineEdit32_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 36: _t->on_lineEdit33_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 37: _t->on_lineEdit_L2_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 38: _t->on_lineEdit_L3_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
-        case 39: _t->on_Set_L_Button_clicked(); break;
-        case 40: _t->on_Get_L_Button_clicked(); break;
+        case 15: _t->OpenFileSystem(); break;
+        case 16: _t->on_actionExit_triggered(); break;
+        case 17: _t->on_StartButton_clicked(); break;
+        case 18: _t->on_TransmitButton_clicked(); break;
+        case 19: _t->on_SettingsButton_clicked(); break;
+        case 20: _t->on_Connect_clicked(); break;
+        case 21: _t->on_StopButton_clicked(); break;
+        case 22: _t->on_ReadButton_clicked(); break;
+        case 23: _t->on_TestModOnButton_clicked(); break;
+        case 24: _t->on_TestModOffButton_clicked(); break;
+        case 25: _t->on_GetTimeAverageButton_clicked(); break;
+        case 26: _t->on_ListenModBox_stateChanged((*reinterpret_cast< int(*)>(_a[1]))); break;
+        case 27: _t->on_lineEdit11_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 28: _t->on_lineEdit31_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 29: _t->on_lineEdit_L1_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 30: _t->on_ExitButton_clicked(); break;
+        case 31: _t->on_lineEdit21_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 32: _t->on_lineEdit12_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 33: _t->on_lineEdit13_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 34: _t->on_lineEdit22_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 35: _t->on_lineEdit23_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 36: _t->on_lineEdit32_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 37: _t->on_lineEdit33_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 38: _t->on_lineEdit_L2_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 39: _t->on_lineEdit_L3_textChanged((*reinterpret_cast< const QString(*)>(_a[1]))); break;
+        case 40: _t->on_Set_L_Button_clicked(); break;
+        case 41: _t->on_Get_L_Button_clicked(); break;
         default: ;
         }
     } else if (_c == QMetaObject::IndexOfMethod) {
@@ -376,13 +380,13 @@ int MainWindow::qt_metacall(QMetaObject::Call _c, int _id, void **_a)
     if (_id < 0)
         return _id;
     if (_c == QMetaObject::InvokeMetaMethod) {
-        if (_id < 41)
+        if (_id < 42)
             qt_static_metacall(this, _c, _id, _a);
-        _id -= 41;
+        _id -= 42;
     } else if (_c == QMetaObject::RegisterMethodArgumentMetaType) {
-        if (_id < 41)
+        if (_id < 42)
             *reinterpret_cast<int*>(_a[0]) = -1;
-        _id -= 41;
+        _id -= 42;
     }
     return _id;
 }

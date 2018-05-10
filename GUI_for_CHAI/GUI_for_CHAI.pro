@@ -28,19 +28,25 @@ SOURCES += \
         mainwindow.cpp \
     qcustomplot.cpp \
     settingswindow.cpp \
-    graphplotwindow.cpp
+    graphplotwindow.cpp \
+    plotfromfile.cpp \
+    fileswindow.cpp
 
 HEADERS += \
         mainwindow.h \
     qcustomplot.h \
     settingswindow.h \
     graphplotwindow.h \
-    chai.h
+    chai.h \
+    plotfromfile.h \
+    fileswindow.h
 
 FORMS += \
         mainwindow.ui \
     settingswindow.ui \
-    graphplotwindow.ui
+    graphplotwindow.ui \
+    plotfromfile.ui \
+    fileswindow.ui
 
 LIBS += -L$$PWD/./ -lchai
 

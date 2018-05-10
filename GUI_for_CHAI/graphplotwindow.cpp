@@ -306,7 +306,7 @@ void GraphPlotWindow::on_SaveButton_clicked()
         }
     }
     if(ui->comboBox->currentText() == "JPG"){
-        QString fileName("GraphsFolder/graph "+ui->lineEdit_Invisible2->text()+".jpg");
+        QString fileName("GraphsFolder/graph "+QDate::currentDate().toString("dd.MM.yy")+" _ "+QTime::currentTime().toString("hh.mm.ss")+".jpg");
         QFile file(fileName);
 
         if (!file.open(QIODevice::WriteOnly))
@@ -317,7 +317,7 @@ void GraphPlotWindow::on_SaveButton_clicked()
         }
     }
     if(ui->comboBox->currentText() == "BMP"){
-        QString fileName("GraphsFolder/graph "+ui->lineEdit_Invisible2->text()+".bmp");
+        QString fileName("GraphsFolder/graph "+QDate::currentDate().toString("dd.MM.yy")+" _ "+QTime::currentTime().toString("hh.mm.ss")+".bmp");
         QFile file(fileName);
         if (!file.open(QIODevice::WriteOnly))
         {
@@ -327,7 +327,7 @@ void GraphPlotWindow::on_SaveButton_clicked()
         }
     }
     if(ui->comboBox->currentText() == "PDF"){
-        QString fileName("GraphsFolder/graph "+ui->lineEdit_Invisible2->text()+".pdf");
+        QString fileName("GraphsFolder/graph "+QDate::currentDate().toString("dd.MM.yy")+" _ "+QTime::currentTime().toString("hh.mm.ss")+".pdf");
         QFile file(fileName);
         if (!file.open(QIODevice::WriteOnly))
         {
@@ -416,6 +416,12 @@ void GraphPlotWindow::on_addButton_L3_clicked()
     ui->pushButton->setEnabled(false);
     ui->addButton_L3->setEnabled(false);
     CreateNewGraph("L3", "green");
+}
+void GraphPlotWindow::on_addButton_D1_clicked()
+{
+     ui->pushButton->setEnabled(false);
+    ui->addButton_D1->setEnabled(false);
+    CreateNewGraph("D1", "black");
 }
 
 void GraphPlotWindow::on_pushButton_clicked()
@@ -532,3 +538,5 @@ void GraphPlotWindow::on_RestartButton_clicked()
     ui->customPlot->replot();
 
 }
+
+

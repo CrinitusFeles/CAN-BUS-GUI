@@ -1,9 +1,12 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "graphplotwindow.h"
-#include "settingswindow.h"
-#include <QCoreApplication>
 
+
+#include "graphplotwindow.h"
+#include "plotfromfile.h"
+#include "fileswindow.h"
+
+#include <QCoreApplication>
 #include <stdio.h>
 #include <stdarg.h>
 #include <time.h>
@@ -22,12 +25,21 @@ const char cm_version[] = "CAN monitor for CHAI, ver. 3.2, 01 Sep 2016";
 _u8 chan;
 int baud;
 _u8 bt0, bt1;
+//QDir mkdir("Output Files");
 
-QDir mkdir("Output Files");
-QFile file("Output Files/" + QDate::currentDate().toString("dd.MM.yy")+" _ "+ QTime::currentTime().toString("hh.mm.ss")+".txt");
-//QFile file("Output files/out.txt");
-
+QFile file(QDate::currentDate().toString("dd.MM.yy")+" _ "+ QTime::currentTime().toString("hh.mm.ss")+".txt");
 QTextStream writeStream(&file);
+
+//QDir mkdir("Output Files");
+//dir.mkdir(dir.path()+"\Output Files");
+
+
+//QFile readFile("03.05.18 _ 16.04.50.txt");
+
+//QFile file("Output files/out.txt");
+//QMessageBox::critical(this, "Warning", "Error opening CAN channel");
+
+
 
 int channelForm = -1;
 int baudrateForm = -1;
@@ -214,6 +226,8 @@ void MainWindow::init_can_channel(void)
 }
 
 void MainWindow::Read(){
+
+
     canwait_t cw;
     int *paddress = &address;
     cw.chan = chan;
@@ -222,7 +236,7 @@ void MainWindow::Read(){
     int ret = 0;
     int frames = 0;
     static unsigned char *ptr=0;
-
+    if(!file.open(QIODevice::Append | QIODevice::Text)) QMessageBox::critical(this, "Warning", "file error");
     ret = CiWaitEvent(&cw, 1, 1500); // timeout = 1000 миллисекунд
     if (ret > 0)
     {
@@ -304,14 +318,19 @@ void MainWindow::Read(){
                                                      " \t "+ QTime::currentTime().toString("hh:mm:ss"));
 
 
-                            writeStream << ui->lineEdit11->text() +"\t" + ui->lineEdit12->text() +"\t"+
-                                           ui->lineEdit13->text() +"\t"+ ui->lineEdit_L1->text()+"\t"+
-                                           ui->lineEdit21->text() +"\t"+ ui->lineEdit22->text() +"\t"+
-                                           ui->lineEdit23->text() +"\t"+ ui->lineEdit_L2->text() +"\t"+
-                                           ui->lineEdit31->text() +"\t"+ ui->lineEdit32->text() +"\t"+
-                                           ui->lineEdit33->text() +"\t"+ ui->lineEdit_L3->text() +"\t"+
-                                           QString::number(ui->lineEdit_L2->text().toDouble()-ui->lineEdit_L1->text().toDouble())+"\t"+
-                                           QTime::currentTime().toString("hh:mm:ss")+"\n";
+                                writeStream << ui->lineEdit11->text() +"\t" + ui->lineEdit12->text() +"\t"+
+                                               ui->lineEdit13->text() +"\t"+ ui->lineEdit_L1->text()+"\t"+
+                                               ui->lineEdit21->text() +"\t"+ ui->lineEdit22->text() +"\t"+
+                                               ui->lineEdit23->text() +"\t"+ ui->lineEdit_L2->text() +"\t"+
+                                               ui->lineEdit31->text() +"\t"+ ui->lineEdit32->text() +"\t"+
+                                               ui->lineEdit33->text() +"\t"+ ui->lineEdit_L3->text() +"\t"+
+                                               QString::number(ui->lineEdit_L2->text().toDouble()-ui->lineEdit_L1->text().toDouble())+"\t"+
+                                               QTime::currentTime().toString("hh:mm:ss")+"\n";
+
+
+
+                            file.close();
+
 
 
 
@@ -376,9 +395,21 @@ MainWindow::MainWindow(QWidget *parent) :
 {
     ui->setupUi(this);
 
-    GraphWindow = new GraphPlotWindow;
-    connect(GraphWindow, &GraphPlotWindow::openWindow, this, &MainWindow::show);
+    //QDir().mkdir(QApplication::applicationDirPath()+"/Output");
 
+
+    GraphWindow = new GraphPlotWindow(this);
+    PlotFile = new PlotFromFile;
+    FileSystem = new FilesWindow;
+
+    connect(FileSystem, &FilesWindow::openWindow, this, &MainWindow::show);
+    connect(GraphWindow, &GraphPlotWindow::openWindow, this, &MainWindow::show);
+    connect(PlotFile, &PlotFromFile::openWindow, this, &MainWindow::show);
+
+
+    connect(FileSystem, SIGNAL(sendPlotFile(const QString)), PlotFile, SLOT(getPlotFile(QString)));
+
+    connect(PlotFile, SIGNAL(OpenFileSystem()), this, SLOT(OpenFileSystem()));
 
     connect(this, SIGNAL(S1T1_Changed(const QString)), GraphWindow, SLOT(getS1T1(QString)));
     connect(this, SIGNAL(S1T2_Changed(const QString)), GraphWindow, SLOT(getS1T2(QString)));
@@ -405,6 +436,7 @@ MainWindow::MainWindow(QWidget *parent) :
     }
     else{
         writeStream << "T1 = \t T2 = \t T3 = \t L = \t T1 = \t T2 = \t T3 = \t L = \t T1 = \t T2 = \t T3 = \t L = \t D = \n";
+        file.close();
     }
     /*if (!file.open(QIODevice::Append | QIODevice::Text))
     {
@@ -462,6 +494,9 @@ MainWindow::MainWindow(QWidget *parent) :
 MainWindow::~MainWindow()
 {
     file.close();
+    FileSystem->close();
+    GraphWindow->close();
+    PlotFile->close();
     delete ui;
     delete timer;
 
@@ -587,7 +622,7 @@ void MainWindow::on_Connect_clicked()
         printMassege(&tx);
 
         Read();
-        ui->lineEdit_L33->setText(QString::number(address));
+        //ui->lineEdit_L33->setText(QString::number(address));
 
 
         /*
@@ -710,11 +745,16 @@ void MainWindow::on_ReadButton_clicked()
 }
 void MainWindow::on_SettingsButton_clicked()
 {
-    SettingsWindow Settings;
-    Settings.setModal(true);
-    Settings.exec();
-}
+    PlotFile->show();
 
+
+}
+void MainWindow::OpenFileSystem()
+{
+
+    FileSystem->show();
+
+}
 
 
 

@@ -60,7 +60,7 @@
      <item>
       <widget class="QPushButton" name="SettingsButton">
        <property name="text">
-        <string>Settings</string>
+        <string>Plot from file</string>
        </property>
       </widget>
      </item>

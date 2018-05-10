@@ -4,8 +4,12 @@
 #include <QMainWindow>
 #include <Qtimer>
 #include <QTime>
+#include <QFileSystemModel>
+#include <QDir>
+
 #include "graphplotwindow.h"
-#include "settingswindow.h"
+#include "plotfromfile.h"
+#include "fileswindow.h"
 
 #include <chai.h>
 #define CMTHR_RET_T unsigned
@@ -53,6 +57,8 @@ private slots:
     void slotTimerAlarm();
     void slotSingleRead();
     void slotSingleTrans();
+
+    void OpenFileSystem();
 
             //Buttons
     void on_actionExit_triggered();
@@ -112,6 +118,8 @@ private:
     Ui::MainWindow *ui;
     QTimer *timer, *singleRead, *singleTrans;
     GraphPlotWindow *GraphWindow;
+    PlotFromFile *PlotFile;
+    FilesWindow *FileSystem;
    // QDir dir;
 };
 
